@@ -1,0 +1,11 @@
+// Enlace para saltar al contenido (WCAG 2.4.1). Queda fuera de la vista hasta recibir el foco.
+.skip-link {
+  position: absolute;
+  z-index: var(--z-skip-link);
+  inset-block-start: calc(-1 * (var(--size-control-sm) + var(--space-lg)));
+  inset-inline-start: var(--space-sm);
+
+  &:focus {
+    inset-block-start: var(--space-sm);
+  }
+}

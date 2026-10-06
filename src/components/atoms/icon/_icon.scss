@@ -1,0 +1,22 @@
+// Icono del sprite SVG: el color sale de currentcolor.
+.icon {
+  --icon-size: var(--size-icon-md);
+
+  display: inline-block;
+  flex: none;
+  width: var(--icon-size);
+  height: var(--icon-size);
+
+  &--sm {
+    --icon-size: var(--size-icon-sm);
+  }
+
+  &--lg {
+    --icon-size: var(--size-icon-lg);
+  }
+
+  // El Figma dibuja este icono a 17,3 px dentro de una caja de 24: el 72 %.
+  &--filters {
+    scale: 0.72;
+  }
+}

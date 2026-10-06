@@ -1,0 +1,22 @@
+@use 'styles/settings/brand' as *;
+@use 'styles/tools' as *;
+
+// Título y subtítulo centrados de una sección, con tamaños fluidos (--text-section-title y --text-section-subtitle).
+.section-header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-lg);
+  padding-inline: var(--space-2xl);
+  text-align: center;
+
+  @include from(tablet-small) {
+    gap: var(--space-sm);
+    padding-inline: 0;
+  }
+
+  &__subtitle {
+    color: $section-subtitle-default;
+    font: var(--text-section-subtitle);
+  }
+}

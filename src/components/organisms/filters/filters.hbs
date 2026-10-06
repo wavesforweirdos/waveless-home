@@ -1,0 +1,48 @@
+<aside class="filters" aria-labelledby="filters-title">
+  <!-- [html-validate-disable-next wcag/h32 -- el formulario todavía no envía nada (los filtros no filtran), así que no hay botón de envío. Cuando se añada el envío: añadir un <button type="submit"> al formulario, quitar este comentario y quitar el preventDefault del submit en filters.ts] -->
+  <form class="filters__form" novalidate>
+    <div class="filters__header">
+      {{> atoms/heading/heading level="3" variant="panel" text="Filtrar mi búsqueda" id="filters-title" class="filters__title"}}
+      <button class="filters__close" type="button" aria-label="Cerrar los filtros">
+        {{> atoms/icon/icon name="close" class=false}}
+      </button>
+    </div>
+    <div class="filters__body">
+      {{#> molecules/filter-group/filter-group name="Destinos" icon="world"}}
+      <ul class="filter-options">
+        {{#each filters.destinations}}
+        <li>{{> molecules/filter-option/filter-option}}</li>
+        {{/each}}
+      </ul>
+      {{/molecules/filter-group/filter-group}}
+      {{#> molecules/filter-group/filter-group name="Aventura" icon="mountains" open=true}}
+      <ul class="filter-options">
+        {{#each filters.adventures}}
+        <li>{{> molecules/filter-option/filter-option}}</li>
+        {{/each}}
+      </ul>
+      <ul class="filter-options filter-options--extra" id="aventura-mas">
+        {{#each filters.adventuresMore}}
+        <li>{{> molecules/filter-option/filter-option}}</li>
+        {{/each}}
+      </ul>
+      <button class="filter-more" type="button" aria-expanded="false" aria-controls="aventura-mas" data-more="Ver {{filters.adventuresMore.length}} más" data-less="Ver menos">Ver {{filters.adventuresMore.length}} más</button>
+      {{/molecules/filter-group/filter-group}}
+      {{#> molecules/filter-group/filter-group name="Alojamiento" icon="home"}}
+      <ul class="filter-options">
+        {{#each filters.lodging}}
+        <li>{{> molecules/filter-option/filter-option}}</li>
+        {{/each}}
+      </ul>
+      {{/molecules/filter-group/filter-group}}
+      {{#> molecules/filter-group/filter-group name="Precio" icon="price" open=true}}
+      <div class="filters__prices">
+        {{> atoms/text-input/text-input id="precio-min" name="precio-min" label="Precio mínimo" placeholder="Mínimo" icon="price" inputmode="numeric"}}
+        {{> atoms/text-input/text-input id="precio-max" name="precio-max" label="Precio máximo" placeholder="Máximo" icon="price" inputmode="numeric"}}
+      </div>
+      {{/molecules/filter-group/filter-group}}
+    </div>
+  </form>
+</aside>
+{{!-- Desde 1280 px el formulario vive en el aside. Por debajo, filters.ts lo mueve aquí al abrirlo y lo devuelve al cerrar. --}}
+<dialog class="filters-dialog" id="filters-dialog" aria-labelledby="filters-title"></dialog>

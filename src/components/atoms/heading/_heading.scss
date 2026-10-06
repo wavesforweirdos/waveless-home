@@ -1,0 +1,23 @@
+@use 'styles/settings/brand' as *;
+
+.heading {
+  &--hero {
+    color: $hero-title-default;
+    font: var(--text-hero-title);
+  }
+
+  &--section {
+    color: $section-title-default;
+    font: var(--text-section-title);
+  }
+
+  &--group {
+    color: $circuit-card-grid-title-default;
+    font: var(--text-group-title);
+  }
+
+  &--panel {
+    color: $filters-section-title-default;
+    font: var(--text-panel-title);
+  }
+}

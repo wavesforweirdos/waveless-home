@@ -1,0 +1,6 @@
+<span class="info-tooltip{{#if class}} {{class}}{{/if}}">
+  <button class="info-tooltip__trigger" type="button" aria-label="{{label}}{{#if subject}} {{subject}}{{/if}}" aria-describedby="{{#if owner}}{{owner}}-tip{{else}}{{id}}{{/if}}">
+    {{> atoms/icon/icon name="tooltip" size="sm"}}
+  </button>
+  <span class="info-tooltip__bubble" id="{{#if owner}}{{owner}}-tip{{else}}{{id}}{{/if}}" role="tooltip">{{text}}</span>
+</span>

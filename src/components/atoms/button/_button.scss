@@ -1,0 +1,103 @@
+@use 'styles/settings/brand' as *;
+
+// Botón pill con variantes primary, secondary y accent, y tamaños sm, base y lg.
+// Cada variante reasigna las propiedades locales --button-*.
+.button {
+  --button-padding-x: var(--space-control-x-base);
+  --button-min-height: var(--size-control-base);
+  --button-font: var(--text-button);
+
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-control-gap);
+  min-height: var(--button-min-height);
+
+  // El borde transparente iguala el tamaño de todas las variantes; se resta del padding.
+  padding-inline: calc(var(--button-padding-x) - var(--border-width));
+  border: var(--border-width) solid var(--button-border);
+  border-radius: var(--radius-control);
+  background-color: var(--button-bg);
+  color: var(--button-fg);
+  font: var(--button-font);
+  text-align: center;
+  text-decoration: none;
+  cursor: pointer;
+
+  // :active = hover + 1 px hacia abajo, sin transición.
+  &:active {
+    transform: translateY(var(--border-width));
+  }
+
+  &--sm {
+    --button-padding-x: var(--space-control-x-sm);
+    --button-min-height: var(--size-control-sm);
+  }
+
+  &--lg {
+    --button-padding-x: var(--space-control-x-lg);
+    --button-min-height: var(--size-control-lg);
+    --button-font: var(--text-button-lg);
+  }
+
+  &--block {
+    display: flex;
+    width: 100%;
+  }
+
+  &--primary {
+    --button-bg: #{$button-primary-background-default};
+    --button-fg: #{$button-primary-text-default};
+    --button-border: transparent;
+
+    &:is(:hover, :active) {
+      --button-bg: #{$button-primary-background-hover};
+      --button-fg: #{$button-primary-text-hover};
+    }
+  }
+
+  &--secondary {
+    --button-bg: #{$button-secondary-background-default};
+    --button-fg: #{$button-secondary-text-default};
+    --button-border: #{$button-secondary-border-default};
+
+    &:is(:hover, :active) {
+      --button-bg: #{$button-secondary-background-hover};
+      --button-fg: #{$button-secondary-text-hover};
+      --button-border: #{$button-secondary-border-hover};
+    }
+  }
+
+  // Acento: el botón naranja sobre fondo oscuro (el CTA del hero).
+  &--accent {
+    --button-bg: #{$button-accent-background-default};
+    --button-fg: #{$button-accent-text-default};
+    --button-border: transparent;
+
+    &:is(:hover, :active) {
+      --button-bg: #{$button-accent-background-hover};
+      --button-fg: #{$button-accent-text-hover};
+    }
+  }
+
+  &:is(:disabled, [aria-disabled='true']) {
+    transform: none;
+    cursor: not-allowed;
+  }
+
+  &--primary:is(:disabled, [aria-disabled='true']) {
+    --button-bg: #{$button-primary-background-disabled};
+    --button-fg: #{$button-primary-text-disabled};
+  }
+
+  &--secondary:is(:disabled, [aria-disabled='true']) {
+    --button-bg: #{$button-secondary-background-disabled};
+    --button-fg: #{$button-secondary-foreground-disabled};
+    --button-border: #{$button-secondary-border-disabled};
+  }
+
+  &--accent:is(:disabled, [aria-disabled='true']) {
+    --button-bg: #{$button-accent-background-disabled};
+    --button-fg: #{$button-accent-text-disabled};
+  }
+}

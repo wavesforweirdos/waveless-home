@@ -1,0 +1,29 @@
+@use 'styles/settings/brand' as *;
+
+// Fila de puntos del carrusel (46 × 10 px). Solo visual: sin foco y con aria-hidden; la posición se
+// anuncia en la región aria-live del hero. Al no haber objetivos pequeños, la separación de 8 px del
+// Figma no incumple WCAG 2.5.8.
+.slider-indicator {
+  display: flex;
+  gap: var(--space-sm);
+
+  &__dot {
+    display: block;
+    width: var(--size-dot);
+    height: var(--size-dot);
+    border: var(--border-width) solid $indicator-slider-border-default;
+    border-radius: 50%;
+    background-color: $indicator-slider-background-default;
+
+    &--current {
+      border-color: $indicator-slider-border-selected-default;
+      background-color: $indicator-slider-background-selected-default;
+
+      // Alto contraste de Windows: sin esto el punto actual pierde el relleno y no se distingue.
+      @media (forced-colors: active) {
+        background-color: highlight;
+        forced-color-adjust: none;
+      }
+    }
+  }
+}

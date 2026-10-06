@@ -1,0 +1,7 @@
+<div class="text-input{{#if class}} {{class}}{{/if}}">
+  <label class="u-visually-hidden" for="{{id}}">{{label}}</label>
+  {{#if icon}}
+  {{> atoms/icon/icon name=icon class="text-input__icon"}}
+  {{/if}}
+  <input class="text-input__field" type="text" id="{{id}}" name="{{name}}" placeholder="{{placeholder}}"{{#if inputmode}} inputmode="{{inputmode}}"{{/if}} autocomplete="off">
+</div>

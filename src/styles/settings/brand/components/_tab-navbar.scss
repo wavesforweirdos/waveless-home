@@ -1,0 +1,12 @@
+@use '../semantic' as *;
+
+$tab-navbar-selection-indicator-background-active: $color-background-secondary-medium-default;
+$tab-navbar-selection-indicator-background-active-hover: $color-background-secondary-medium-hover;
+$tab-navbar-text-default: $color-foreground-on-white-default;
+$tab-navbar-text-hover: $color-foreground-on-white-hover;
+$tab-navbar-text-selected: $color-foreground-on-white-default;
+$tab-navbar-foreground-selected-hover: $color-foreground-on-white-hover;
+$tab-navbar-icon-default: $color-icon-black-default;
+$tab-navbar-icon-hover: $color-icon-black-hover;
+$tab-navbar-icon-selected: $color-icon-black-default;
+$tab-navbar-icon-selected-hover: $color-icon-black-hover;

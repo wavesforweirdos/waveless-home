@@ -1,0 +1,82 @@
+{
+  "destinations": [
+    { "id": "destino-europa", "label": "Europa" },
+    { "id": "destino-asia", "label": "Asia" },
+    { "id": "destino-africa", "label": "África" },
+    { "id": "destino-norteamerica", "label": "Norteamérica" },
+    { "id": "destino-centroamerica", "label": "Centroamérica y Caribe" },
+    { "id": "destino-sudamerica", "label": "Sudamérica" },
+    { "id": "destino-oceania", "label": "Oceanía" }
+  ],
+  "lodging": [
+    { "id": "alojamiento-hotel", "label": "Hotel" },
+    { "id": "alojamiento-apartamento", "label": "Apartamento" },
+    { "id": "alojamiento-hostal", "label": "Hostal" },
+    { "id": "alojamiento-camping", "label": "Camping" },
+    { "id": "alojamiento-casa-rural", "label": "Casa rural" },
+    {
+      "id": "alojamiento-lodge",
+      "label": "Lodge",
+      "tooltip": "Alojamiento en plena naturaleza, típico de safaris y reservas."
+    }
+  ],
+  "adventures": [
+    { "id": "aventura-quads", "label": "Quads", "tooltip": "Ruta en quads por pistas y senderos." },
+    {
+      "id": "aventura-parapente",
+      "label": "Parapente",
+      "checked": true,
+      "tooltip": "Vuelo en tándem con piloto, sin experiencia previa."
+    },
+    {
+      "id": "aventura-rafting",
+      "label": "Rafting",
+      "tooltip": "Descenso en balsa por los rápidos de un río."
+    },
+    {
+      "id": "aventura-explora",
+      "label": "Explora",
+      "checked": true,
+      "tooltip": "Rutas guiadas para descubrir el entorno a tu ritmo."
+    },
+    {
+      "id": "aventura-buceo",
+      "label": "Buceo",
+      "tooltip": "Bautismo o inmersiones para buceadores titulados."
+    },
+    {
+      "id": "aventura-paracaidas",
+      "label": "Paracaídas",
+      "tooltip": "Salto en tándem con instructor."
+    },
+    {
+      "id": "aventura-snowboard",
+      "label": "Snowboard",
+      "tooltip": "Clases y rutas en pista para todos los niveles."
+    },
+    { "id": "aventura-surf", "label": "Surf", "tooltip": "Clases en grupo y alquiler de tabla." }
+  ],
+  "adventuresMore": [
+    { "id": "aventura-senderismo", "label": "Senderismo" },
+    { "id": "aventura-barranquismo", "label": "Barranquismo" },
+    { "id": "aventura-kayak", "label": "Kayak" },
+    { "id": "aventura-escalada", "label": "Escalada" },
+    { "id": "aventura-ciclismo-de-montana", "label": "Ciclismo de montaña" },
+    { "id": "aventura-safari-fotografico", "label": "Safari fotográfico" },
+    { "id": "aventura-esqui-alpino", "label": "Esquí alpino" },
+    { "id": "aventura-heliesqui", "label": "Heliesquí" },
+    { "id": "aventura-vuelo-en-globo", "label": "Vuelo en globo" },
+    { "id": "aventura-espeleologia", "label": "Espeleología" },
+    { "id": "aventura-equitacion", "label": "Equitación" },
+    { "id": "aventura-windsurf", "label": "Windsurf" },
+    { "id": "aventura-kitesurf", "label": "Kitesurf" },
+    { "id": "aventura-paddle-surf", "label": "Paddle surf" },
+    { "id": "aventura-snorkel", "label": "Snorkel" },
+    { "id": "aventura-observacion-de-ballenas", "label": "Observación de ballenas" },
+    { "id": "aventura-moto-de-nieve", "label": "Excursión en moto de nieve" },
+    { "id": "aventura-raquetas-de-nieve", "label": "Senderismo con raquetas de nieve" },
+    { "id": "aventura-trineo-de-perros", "label": "Trineo de perros" },
+    { "id": "aventura-via-ferrata", "label": "Vía ferrata" },
+    { "id": "aventura-bungee-jumping", "label": "Bungee jumping" }
+  ]
+}

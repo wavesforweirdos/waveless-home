@@ -1,0 +1,88 @@
+{
+  "groups": [
+    {
+      "id": "asia-1",
+      "title": "Asia",
+      "cards": [
+        {
+          "photo": "card-bangkok",
+          "tag": "Quads",
+          "city": "Marruecos, África",
+          "days": "9 días",
+          "title": "Descubre Bangkok con Iberojet",
+          "price": "248,00 €"
+        },
+        {
+          "photo": "card-desert",
+          "tag": "Quads",
+          "city": "Marruecos, África",
+          "days": "9 días",
+          "title": "Descubre Bangkok con Iberojet",
+          "price": "248,00 €"
+        },
+        {
+          "photo": "card-town",
+          "tag": "Quads",
+          "city": "Marruecos, África",
+          "days": "9 días",
+          "title": "Descubre Bangkok con Iberojet",
+          "price": "248,00 €"
+        }
+      ]
+    },
+    {
+      "id": "asia-2",
+      "title": "Asia",
+      "cards": [
+        {
+          "photo": "card-bangkok",
+          "tag": "Quads",
+          "city": "Marruecos, África",
+          "days": "9 días",
+          "title": "Descubre Bangkok con Iberojet",
+          "price": "248,00 €"
+        },
+        {
+          "photo": "card-desert",
+          "tag": "Quads",
+          "city": "Marruecos, África",
+          "days": "9 días",
+          "title": "Descubre Bangkok con Iberojet",
+          "price": "248,00 €"
+        },
+        {
+          "photo": "card-town",
+          "tag": "Quads",
+          "city": "Marruecos, África",
+          "days": "9 días",
+          "title": "Descubre Bangkok con Iberojet",
+          "price": "248,00 €"
+        },
+        {
+          "photo": "card-bangkok",
+          "tag": "Quads",
+          "city": "Marruecos, África",
+          "days": "9 días",
+          "title": "Descubre Bangkok con Iberojet",
+          "price": "248,00 €"
+        },
+        {
+          "photo": "card-desert",
+          "tag": "Quads",
+          "city": "Marruecos, África",
+          "days": "9 días",
+          "title": "Descubre Bangkok con Iberojet",
+          "price": "248,00 €"
+        },
+        {
+          "photo": "card-town",
+          "tag": "Quads",
+          "city": "Marruecos, África",
+          "days": "9 días",
+          "title": "Descubre Bangkok con Iberojet",
+          "price": "248,00 €"
+        }
+      ]
+    }
+  ]
+}

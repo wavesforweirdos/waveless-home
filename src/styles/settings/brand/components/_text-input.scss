@@ -1,0 +1,15 @@
+@use '../global' as *;
+@use '../semantic' as *;
+
+$form-text-input-background-default: $color-background-white-default;
+$form-text-input-border-default: $color-border-primary-dark-default;
+$form-text-input-border-hover: $color-border-primary-dark-hover;
+$form-text-input-border-focus: $color-border-primary-dark-default;
+$form-text-input-border-focus-hover: $color-border-primary-dark-hover;
+
+// A11Y-WARNING [WCAG 1.4.3] Contraste 4,30:1 (mínimo 4,5:1) del placeholder sobre el campo blanco. Propuesta: #786f78 (4,83:1).
+$form-text-input-placeholder-default: $basic-500;
+$form-text-input-placeholder-hover: $color-foreground-medium-light-hover;
+$form-text-input-text-default: $color-foreground-text-on-light-default;
+$form-text-input-icon-default: $color-icon-primary-dark-default;
+$form-text-input-icon-hover: $color-icon-primary-dark-hover;

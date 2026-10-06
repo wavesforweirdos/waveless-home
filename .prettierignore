@@ -1,0 +1,7 @@
+dist
+package-lock.json
+
+# Prettier no entiende los partials de Handlebars ({{> nombre}}). El HTML resultante
+# se valida con html-validate sobre dist/.
+*.hbs
+index.html

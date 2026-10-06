@@ -1,0 +1,7 @@
+// Punto de entrada de los estilos, de menos a más específico (ITCSS):
+// settings (tokens) → generic (reset, fuentes) → elements (etiquetas) → components → utilities.
+@use 'styles/settings';
+@use 'styles/generic';
+@use 'styles/elements';
+@use '../components';
+@use 'styles/utilities';

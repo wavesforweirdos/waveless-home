@@ -1,0 +1,36 @@
+@use '../tools' as *;
+@use '../settings/brand' as *;
+
+html {
+  background-color: $page-background;
+  color: $page-text;
+  font: var(--text-body);
+}
+
+// El anillo de foco sobresale 4 px: este margen evita que el navegador lo corte
+// al llevar un control al borde de un contenedor con scroll.
+:where(a, button, input, summary, [tabindex]) {
+  scroll-margin-block: calc(2 * var(--border-width-strong));
+}
+
+// Foco visible para teclado en cualquier elemento interactivo; los componentes con indicador propio lo sustituyen.
+:focus-visible {
+  @include focus-ring;
+}
+
+// Destino del skip link: se enfoca por código y no es interactivo, así que no lleva anillo
+[tabindex='-1']:focus-visible {
+  outline: none;
+  box-shadow: none;
+}
+
+// Modal abierto: la página de fondo no se desplaza.
+html[data-scroll-locked] {
+  overflow-y: scroll;
+
+  body {
+    position: fixed;
+    inset-block-start: var(--scroll-lock-offset);
+    inset-inline: 0;
+  }
+}

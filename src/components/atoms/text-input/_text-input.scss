@@ -1,0 +1,64 @@
+@use 'styles/settings/brand' as *;
+
+// Campo de texto pill con icono. La etiqueta existe pero va oculta (u-visually-hidden).
+.text-input {
+  display: flex;
+  align-items: center;
+  gap: var(--space-md);
+  min-height: var(--size-control-base);
+  padding-inline: calc(var(--space-lg) - var(--border-width))
+    calc(var(--space-md) - var(--border-width));
+  border: var(--border-width) solid $form-text-input-border-default;
+  border-radius: var(--radius-control);
+  background-color: $form-text-input-background-default;
+  color: $form-text-input-text-default;
+
+  &:hover {
+    border-color: $form-text-input-border-hover;
+  }
+
+  &:focus-within {
+    box-shadow: inset 0 0 0 var(--border-width) $form-text-input-border-focus;
+  }
+
+  &:hover:focus-within {
+    box-shadow: inset 0 0 0 var(--border-width) $form-text-input-border-focus-hover;
+  }
+
+  &__icon {
+    color: $form-text-input-icon-default;
+
+    .text-input:hover & {
+      color: $form-text-input-icon-hover;
+    }
+  }
+
+  &__field {
+    flex: 1;
+    min-width: 0;
+    padding: 0;
+    border: 0;
+    background: transparent;
+    color: inherit;
+    font: var(--text-field-value);
+
+    &::placeholder {
+      color: $form-text-input-placeholder-default;
+
+      .text-input:hover & {
+        color: $form-text-input-placeholder-hover;
+      }
+    }
+
+    &:focus-visible {
+      outline-color: transparent;
+      box-shadow: none;
+    }
+
+    // iOS Safari amplía la página al enfocar campos de menos de 16 px: solo en iOS (-webkit-touch-callout) pasa de 14 a 16 px.
+    /* stylelint-disable-next-line property-no-vendor-prefix */
+    @supports (-webkit-touch-callout: none) {
+      font: var(--text-field-value-ios);
+    }
+  }
+}

@@ -1,0 +1,76 @@
+@use '../settings/brand' as *;
+
+// Separación del anillo de los enlaces de texto o imagen: píldora alrededor del contenido visible.
+$focus-gap-link: var(--space-xs);
+
+// Anillo de foco de dos tonos: un contorno y un halo que lo separa del elemento.
+// $gap: separación entre el elemento y el anillo: 2 px, o menos en controles pequeños.
+// $inset: dibuja el anillo hacia dentro
+// $on-photo: invierte los tonos
+@mixin focus-ring($gap: var(--border-width-strong), $inset: false, $on-photo: false) {
+  $line: $focus-ring-color;
+  $halo: $focus-ring-halo;
+
+  @if $on-photo {
+    $line: $focus-ring-halo;
+    $halo: $focus-ring-color;
+  }
+
+  outline: var(--border-width-strong) solid $line;
+
+  @if $inset {
+    outline-offset: calc(-1 * var(--border-width-strong));
+    box-shadow: inset 0 0 0 calc(2 * var(--border-width-strong)) $halo;
+  } @else {
+    outline-offset: $gap;
+    box-shadow: 0 0 0 $gap $halo;
+  }
+}
+
+// Base de los anillos que no van en el propio elemento: se dibujan en un ::after centrado en vertical.
+@mixin focus-ring-overlay {
+  position: relative;
+  outline: none;
+  box-shadow: none;
+
+  &::after {
+    content: '';
+    position: absolute;
+    inset-block-start: 50%;
+    pointer-events: none;
+    translate: 0 -50%;
+
+    @content;
+  }
+}
+
+// Anillo circular sobre el icono final.
+@mixin focus-ring-trailing-icon($size) {
+  @include focus-ring-overlay {
+    inset-inline-end: 0;
+    width: $size;
+    height: $size;
+    border-radius: 50%;
+
+    @include focus-ring;
+  }
+}
+
+// Para enlaces más altos que su contenido (logo, «Ver 21 más», «Ver desglose»): píldora centrada de altura $height.
+// Con $halo: false es solo de contorno, para texto sobre fondo claro, con más aire en horizontal.
+@mixin focus-ring-pill($height, $halo: true) {
+  @include focus-ring-overlay {
+    height: $height;
+    border-radius: var(--radius-control);
+
+    @if $halo {
+      inset-inline: 0;
+
+      @include focus-ring($focus-gap-link);
+    } @else {
+      inset-inline: calc(-1 * var(--border-width-strong));
+      outline: var(--border-width-strong) solid $focus-ring-color;
+      outline-offset: $focus-gap-link;
+    }
+  }
+}

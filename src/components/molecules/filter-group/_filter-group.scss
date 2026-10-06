@@ -1,0 +1,70 @@
+@use 'styles/settings/brand' as *;
+@use 'styles/tools' as *;
+
+// Grupo plegable del panel de filtros: un <details> nativo, accesible y sin JavaScript.
+// El estado vive en el atributo open, así que se conserva al mover el formulario.
+.filter-group {
+  --filter-group-name: #{$filters-filter-name-text-default};
+  --filter-group-icon: #{$filters-icon-default};
+  --filter-group-chevron: #{$filters-chevron-default};
+
+  &[open] {
+    --filter-group-name: #{$filters-filter-name-text-open};
+    --filter-group-icon: #{$filters-icon-open};
+    --filter-group-chevron: #{$filters-chevron-open};
+  }
+
+  &__summary {
+    display: flex;
+    align-items: center;
+    gap: var(--space-sm);
+    min-height: var(--size-control-base);
+    cursor: pointer;
+    list-style: none;
+
+    // Safari pinta su propio triángulo aparte de list-style.
+    /* stylelint-disable-next-line selector-no-vendor-prefix */
+    &::-webkit-details-marker {
+      display: none;
+    }
+
+    &:hover {
+      --filter-group-name: #{$filters-filter-name-text-hover};
+      --filter-group-icon: #{$filters-icon-hover};
+      --filter-group-chevron: #{$filters-chevron-hover};
+    }
+
+    // Con el foco se resalta el chevron.
+    &:focus-visible {
+      @include focus-ring-trailing-icon(var(--size-icon-md));
+    }
+
+    .filter-group[open] > &:hover {
+      --filter-group-name: #{$filters-filter-name-text-open-hover};
+      --filter-group-icon: #{$filters-icon-open-hover};
+      --filter-group-chevron: #{$filters-chevron-open-hover};
+    }
+  }
+
+  &__icon {
+    color: var(--filter-group-icon);
+  }
+
+  &__name {
+    flex: 1;
+    color: var(--filter-group-name);
+    font: var(--text-nav);
+
+    .filter-group[open] > .filter-group__summary & {
+      font: var(--text-nav-active);
+    }
+  }
+
+  &__chevron {
+    color: var(--filter-group-chevron);
+
+    .filter-group[open] > .filter-group__summary & {
+      rotate: 90deg;
+    }
+  }
+}

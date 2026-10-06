@@ -1,0 +1,234 @@
+@use '../tools' as *;
+
+// TOKENS SEMÁNTICOS: espaciado, tamaños, radios, sombras, capas y tipografía.
+// Dan nombre a la intención (--space-section, --text-button…) a partir de los valores crudos de
+// _primitives.scss, y son lo único de este tipo que usan los componentes (Stylelint lo hace cumplir).
+// Son propiedades CSS porque no dependen de la marca. El color va aparte, en brand/.
+
+:root {
+  // Espaciado: escala general y valores por intención. Los de 10 y 14 px los dibuja el Figma en controles.
+  --space-3xs: var(--space-2);
+  --space-2xs: var(--space-4);
+  --space-xs: var(--space-6);
+  --space-sm: var(--space-8);
+  --space-md: var(--space-12);
+  --space-lg: var(--space-16);
+  --space-xl: var(--space-24);
+  --space-2xl: var(--space-32);
+  --space-3xl: var(--space-48);
+  --space-control-gap: var(--space-10);
+  --space-control-x-sm: var(--space-24);
+  --space-control-x-base: var(--space-40);
+  --space-control-x-lg: var(--space-48);
+  --space-toggle-x: var(--space-14);
+  --space-tooltip-x: var(--space-10);
+  --space-tab-x: var(--space-md);
+  --space-tab-gap: var(--space-xs);
+
+  // Espaciado de página: cambia con el breakpoint).
+  --space-gutter: var(--space-16);
+  --space-section: var(--space-56);
+
+  // En móvil las cards sobresalen 1 px del margen: 360 px en 390.
+  --space-card-bleed: var(--space-1);
+  --space-section-header: var(--space-40);
+  --space-navbar-x: var(--space-lg);
+  --space-navbar-tabs: var(--space-lg);
+  --space-footer-x: var(--space-2xl);
+  --space-footer-y: var(--space-3xl);
+  --space-hero-x: var(--space-40);
+  --space-popover-gap: var(--space-20);
+
+  // Tamaños
+  --size-icon-sm: var(--size-16);
+  --size-icon-md: var(--size-24);
+  --size-icon-lg: var(--size-32);
+  --size-control-sm: var(--size-40);
+  --size-control-base: var(--size-48);
+  --size-control-lg: var(--size-56);
+  --size-target-min: var(--size-24); // WCAG 2.5.8: objetivo táctil mínimo
+  --size-navbar: var(--size-56);
+  --size-hero: var(--size-400);
+  --size-card: var(--size-264);
+  --size-card-mobile: var(--size-360);
+  --size-card-image: var(--size-204);
+  --size-card-price: calc(var(--line-height-16) + var(--line-height-24)); // «Desde» más el importe
+  --size-filters: var(--size-264);
+  --size-filters-panel: var(--size-296);
+  --size-filters-header: var(--size-80);
+  --size-popover: var(--size-400);
+  --size-tooltip-max: var(--size-176);
+  --size-tab-marker-width: var(--size-18);
+  --size-tab-marker-height: var(--size-12);
+  --size-dot: var(--size-10);
+  --size-checkbox-box: var(--size-18);
+
+  // Línea
+  --border-width: var(--border-width-1);
+  --border-width-strong: var(--border-width-2);
+
+  // Radios
+  --radius-control: var(--radius-208);
+  --radius-tag: var(--radius-208);
+  --radius-card: var(--radius-24);
+  --radius-checkbox: var(--radius-2);
+  --radius-slider-control: var(--radius-2);
+  --radius-tooltip: var(--radius-4);
+
+  // Sombras
+  --shadow-raised: var(--shadow-100);
+  --shadow-raised-hover: var(--shadow-200);
+
+  // Capas
+  --z-tooltip: 1;
+  --z-popover: 1;
+  --z-menu: 2;
+  --z-skip-link: 3;
+
+  // Tipografía: cada rol es el atajo `font` (peso, tamaño/interlineado, familia), p. ej. `font: var(--text-button)`.
+  --font-heading: var(--font-family-syne);
+  --font-body: var(--font-family-nunito);
+  --text-body: var(--font-weight-400) var(--font-size-16) / var(--line-height-24) var(--font-body);
+  --text-group-title: var(--font-weight-600) var(--font-size-22) / var(--line-height-24)
+    var(--font-heading);
+  --text-panel-title: var(--font-weight-700) var(--font-size-18) / var(--line-height-24)
+    var(--font-heading);
+  --text-card-city: var(--font-weight-700) var(--font-size-14) / var(--line-height-18)
+    var(--font-heading);
+  --text-card-days: var(--font-weight-500) var(--font-size-14) / var(--line-height-18)
+    var(--font-heading);
+  --text-card-title: var(--font-weight-700) var(--font-size-18) / var(--line-height-22)
+    var(--font-body);
+  --text-price: var(--font-weight-700) var(--font-size-22) / var(--line-height-24) var(--font-body);
+  --text-caption: var(--font-weight-500) var(--font-size-12) / var(--line-height-16)
+    var(--font-body);
+  --text-badge: var(--font-weight-800) var(--font-size-12) / var(--line-height-16) var(--font-body);
+  --text-button: var(--font-weight-600) var(--font-size-16) / var(--line-height-24) var(--font-body);
+  --text-button-lg: var(--font-weight-600) var(--font-size-20) / var(--line-height-24)
+    var(--font-body);
+  --text-nav: var(--font-weight-600) var(--font-size-16) / var(--line-height-20) var(--font-body);
+  --text-nav-active: var(--font-weight-700) var(--font-size-16) / var(--line-height-20)
+    var(--font-body);
+  --text-control: var(--font-weight-600) var(--font-size-14) / var(--line-height-20)
+    var(--font-body);
+  --text-control-strong: var(--font-weight-700) var(--font-size-14) / var(--line-height-20)
+    var(--font-body);
+  --text-link: var(--font-weight-600) var(--font-size-14) / var(--line-height-16) var(--font-body);
+  --text-tooltip: var(--font-weight-500) var(--font-size-14) / var(--line-height-16)
+    var(--font-body);
+  --text-popover-title: var(--font-weight-700) var(--font-size-18) / var(--line-height-24)
+    var(--font-body);
+  --text-popover-city: var(--font-weight-700) var(--font-size-18) / var(--line-height-24)
+    var(--font-heading);
+  --text-popover-days: var(--font-weight-500) var(--font-size-18) / var(--line-height-24)
+    var(--font-heading);
+  --text-popover-label: var(--font-weight-500) var(--font-size-16) / var(--line-height-20)
+    var(--font-body);
+  --text-popover-amount: var(--font-weight-700) var(--font-size-18) / var(--line-height-20)
+    var(--font-body);
+  --text-popover-total: var(--font-weight-700) var(--font-size-18) / var(--line-height-22)
+    var(--font-body);
+  --text-legal: var(--font-weight-700) var(--font-size-14) / var(--line-height-20) var(--font-body);
+  --text-field-value-ios: var(--font-weight-500) var(--font-size-16) / var(--line-height-20)
+    var(--font-body);
+  --text-field-value: var(--font-weight-500) var(--font-size-14) / var(--line-height-20)
+    var(--font-body);
+}
+
+@include from(tablet-small) {
+  :root {
+    --space-gutter: var(--space-24);
+    --space-section-header: var(--space-48);
+    --space-navbar-x: var(--space-xl);
+    --space-footer-x: var(--space-xl);
+    --size-navbar: var(--size-80);
+    --size-card-image: var(--size-188);
+  }
+}
+
+@include from(tablet-large) {
+  :root {
+    --space-navbar-x: var(--space-2xl);
+    --space-footer-x: var(--space-40);
+  }
+}
+
+@include from(desktop) {
+  :root {
+    --space-section: var(--space-72);
+    --space-section-header: var(--space-72);
+    --space-navbar-tabs: var(--space-72);
+    --space-hero-x: var(--space-16);
+  }
+}
+
+// Roles tipográficos fluidos: tamaño e interlineado (px) a 390, 744, 1024 y 1280 px, interpolados (tools/_fluid.scss).
+// Salen del CSS de Figma; el hero no es monótono y se respeta tal cual.
+@include fluid-text-tokens(
+  (
+    'hero-title': (
+      'weight': 700,
+      'family': var(--font-heading),
+      'sizes': (
+        32,
+        34,
+        34,
+        30,
+      ),
+      'lines': (
+        36,
+        38,
+        38,
+        34,
+      ),
+    ),
+    'hero-subtitle': (
+      'weight': 500,
+      'family': var(--font-body),
+      'sizes': (
+        24,
+        24,
+        24,
+        20,
+      ),
+      'lines': (
+        28,
+        30,
+        30,
+        26,
+      ),
+    ),
+    'section-title': (
+      'weight': 700,
+      'family': var(--font-heading),
+      'sizes': (
+        30,
+        32,
+        34,
+        38,
+      ),
+      'lines': (
+        32,
+        34,
+        36,
+        40,
+      ),
+    ),
+    'section-subtitle': (
+      'weight': 400,
+      'family': var(--font-body),
+      'sizes': (
+        20,
+        20,
+        22,
+        22,
+      ),
+      'lines': (
+        24,
+        24,
+        26,
+        26,
+      ),
+    ),
+  )
+);

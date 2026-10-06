@@ -1,0 +1,19 @@
+<div class="header">
+  <a class="header__brand" href="./">
+    {{> atoms/logo/logo class="header__logo"}}
+  </a>
+  <button class="header__toggle" type="button" aria-expanded="false" aria-controls="menu-principal" aria-label="Menú">
+    {{> atoms/icon/icon name="menu" size="lg"}}
+  </button>
+  <div class="header__menu" id="menu-principal">
+    <nav class="header__nav" aria-label="Principal">
+      <ul class="header__tabs">
+        <li class="header__tab">{{> molecules/nav-tab/nav-tab href="#" label="Aventura" icon="mountains" current=true class="header__tab-link"}}</li>
+        <li class="header__tab">{{> molecules/nav-tab/nav-tab href="#" label="Destinos" icon="world" class="header__tab-link"}}</li>
+        <li class="header__tab">{{> molecules/nav-tab/nav-tab href="#" label="Alojamiento" icon="home" class="header__tab-link"}}</li>
+        <li class="header__tab">{{> molecules/nav-tab/nav-tab href="#" label="Sobre nosotros" class="header__tab-link"}}</li>
+      </ul>
+    </nav>
+    {{> atoms/button/button variant="primary" size="base" label="Reserva" href="#" class="header__cta"}}
+  </div>
+</div>

@@ -1,0 +1,13 @@
+// Mejora progresiva: estilos que solo valen con JavaScript. @media (scripting: enabled) los aplica desde el primer pintado.
+// Si el módulo no carga, un script del <head> marca <html data-js-failed> y quedan sin efecto.
+@mixin js-enhanced {
+  @media (scripting: enabled) {
+    :root:not([data-js-failed]) & {
+      @content;
+    }
+  }
+
+  :root[data-scripting-fallback] & {
+    @content;
+  }
+}

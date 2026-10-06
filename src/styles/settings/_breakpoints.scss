@@ -1,0 +1,9 @@
+// Mobile-first: cada breakpoint es un min-width que se aplica con @include from(nombre).
+$breakpoints: (
+  'tablet-small': 744px,
+  'tablet-large': 1024px,
+  'desktop': 1280px,
+);
+
+// Ancho del frame móvil del Figma. Es el límite inferior de la tipografía fluida.
+$mobile-width: 390px;

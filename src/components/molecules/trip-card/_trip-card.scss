@@ -1,0 +1,180 @@
+@use 'styles/settings/brand' as *;
+@use 'styles/tools' as *;
+
+// Card: foto con etiqueta, cuerpo con destino y título, y pie con precio, desglose y botón.
+// El pie es Grid porque el orden cambia en móvil: desglose, precio y botón debajo a todo el ancho.
+.trip-card {
+  --trip-card-text: #{$card-text-default};
+  --trip-card-title: #{$card-title-default};
+
+  position: relative;
+  display: flex;
+  flex-direction: column;
+
+  // Rellena el hueco de su fila: las cards con menos texto igualan a las de al lado.
+  height: 100%;
+  border-radius: var(--radius-card);
+  background-color: $card-background-default;
+  box-shadow: var(--shadow-raised);
+
+  &:hover {
+    --trip-card-text: #{$card-text-hover};
+    --trip-card-title: #{$card-title-hover};
+
+    background-color: $card-background-hover;
+    box-shadow: var(--shadow-raised-hover);
+  }
+
+  &__media {
+    position: relative;
+  }
+
+  &__photo {
+    display: block;
+    width: 100%;
+    height: var(--size-card-image);
+    border-radius: var(--radius-card) var(--radius-card) 0 0;
+    object-fit: cover;
+  }
+
+  &__tag {
+    position: absolute;
+    inset-block-start: var(--space-lg);
+    inset-inline-end: var(--space-lg);
+  }
+
+  // Crece para que el pie quede siempre abajo, alineado en todas las cards de la fila.
+  &__body {
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+    gap: var(--space-sm);
+    padding: var(--space-lg);
+  }
+
+  &__place {
+    display: flex;
+    gap: var(--space-xs);
+  }
+
+  &__city {
+    color: var(--trip-card-title);
+    font: var(--text-card-city);
+  }
+
+  &__days {
+    color: var(--trip-card-text);
+    font: var(--text-card-days);
+  }
+
+  // El título se parte en cuanto no cabe, sin equilibrar las líneas como hace el reset. Reserva 2 líneas.
+  &__title {
+    min-height: 2lh;
+    color: var(--trip-card-text);
+    font: var(--text-card-title);
+    text-wrap: wrap;
+  }
+
+  &__bar {
+    display: grid;
+
+    // La fila del precio tiene alto fijo: no cambia si falta «Desde» o si el botón de desglose
+    // está oculto (sin JavaScript).
+    grid-template:
+      'breakdown price' minmax(var(--size-card-price), auto)
+      'book book' auto
+      / 1fr auto;
+    gap: var(--space-md) var(--space-lg);
+    align-items: end;
+    padding: var(--space-md) var(--space-lg) var(--space-lg);
+    border-radius: 0 0 var(--radius-card) var(--radius-card);
+    background-color: $card-circuit-card-bottom-bar-background-default;
+
+    &:hover {
+      background-color: $card-circuit-card-bottom-bar-background-hover;
+    }
+
+    @include from(tablet-small) {
+      grid-template-areas:
+        'price book'
+        'breakdown book';
+      grid-template-rows: minmax(var(--size-card-price), auto) minmax(var(--size-icon-sm), auto);
+      row-gap: var(--space-3xs);
+    }
+  }
+
+  &__price {
+    display: flex;
+    flex-direction: column;
+    grid-area: price;
+    align-items: flex-end;
+
+    @include from(tablet-small) {
+      align-items: flex-start;
+    }
+  }
+
+  &__from {
+    color: $card-top-price-text;
+    font: var(--text-caption);
+  }
+
+  &__amount {
+    color: $card-price;
+    font: var(--text-price);
+  }
+
+  // El texto mide 16 px y el objetivo táctil debe llegar a 24 (WCAG 2.5.8):
+  // el margen negativo conserva el layout.
+  &__breakdown {
+    display: inline-flex;
+    grid-area: breakdown;
+    align-items: center;
+    place-self: end start;
+    min-height: var(--size-target-min);
+    margin-block: calc((var(--size-icon-sm) - var(--size-target-min)) / 2);
+    padding: 0;
+    border: 0;
+    background: none;
+    color: $card-breakdown-foreground-default;
+    font: var(--text-link);
+    cursor: pointer;
+
+    &:hover {
+      color: $card-breakdown-foreground-hover;
+    }
+
+    // Píldora de contorno alrededor del enlace. Desde 744 px se acorta para no pisar el precio de encima.
+    &:focus-visible {
+      @include focus-ring-pill(var(--size-icon-sm), $halo: false);
+
+      @include from(tablet-small) {
+        &::after {
+          height: calc(var(--size-icon-sm) - 2 * ($focus-gap-link - var(--border-width-strong)));
+        }
+      }
+    }
+  }
+
+  &__breakdown-label {
+    text-decoration: underline;
+  }
+
+  &__chevron {
+    color: $card-breakdown-chevron-default;
+
+    .trip-card__breakdown:hover & {
+      color: $card-breakdown-chevron-hover;
+    }
+  }
+
+  &__book {
+    grid-area: book;
+    align-self: end;
+
+    // En móvil el botón ocupa todo el ancho de la fila.
+    @include below(tablet-small) {
+      justify-self: stretch;
+    }
+  }
+}

@@ -1,0 +1,7 @@
+@use '../settings/brand' as *;
+
+// Barra de scroll fina para las zonas con scroll interno.
+@mixin scrollbar-thin {
+  scrollbar-color: $scrollbar-thumb transparent;
+  scrollbar-width: thin;
+}

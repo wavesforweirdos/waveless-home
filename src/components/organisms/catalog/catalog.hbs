@@ -1,0 +1,12 @@
+<section class="catalog" aria-labelledby="catalog-title">
+  {{> molecules/section-header/section-header title="Vive tus propias aventuras" subtitle="Para los que les gusta explorar y conocer mundo sin complejos" titleId="catalog-title"}}
+  <div class="catalog__body">
+    {{> atoms/filter-toggle/filter-toggle label="Ver filtros" popup="dialog" class="catalog__filters-toggle"}}
+    {{> organisms/filters/filters}}
+    <div class="catalog__groups">
+      {{#each cards.groups}}
+      {{> organisms/card-group/card-group}}
+      {{/each}}
+    </div>
+  </div>
+</section>

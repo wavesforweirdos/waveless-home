@@ -1,0 +1,18 @@
+@use 'global' as *;
+@use 'semantic' as *;
+
+// Variables propias del proyecto
+$section-title-default: #2f222f;
+
+// A11Y-WARNING [WCAG 1.4.3] Contraste 4,25:1 (mínimo 4,5:1) del subtítulo de sección sobre blanco. Propuesta: #786f78 (4,83:1).
+$section-subtitle-default: #6b7d8d;
+$circuit-card-grid-title-default: $color-foreground-on-light-default; // título de grupo
+$info-tooltip-icon-default: $color-icon-black-default;
+$page-background: $color-background-white-default;
+$page-text: $color-foreground-on-light-default;
+$focus-ring-color: $primary-700; // anillo de foco de dos tonos
+$focus-ring-halo: $basic-000-white;
+$filters-background: $color-background-secondary-light-default; // el fondo del panel de filtros
+$scrollbar-thumb: $basic-500; // tirador de las barras de scroll internas
+$slider-control-underlay: $color-background-white-default; // relleno blanco opaco que el Figma pone bajo el 32 % de la flecha
+$footer-border-top-default: #e2d7dd; // borde del footer

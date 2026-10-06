@@ -1,0 +1,7 @@
+{
+  "extends": ["../../../stylelint.config.js"],
+  "rules": {
+    "declaration-property-value-disallowed-list": null,
+    "color-no-hex": null
+  }
+}

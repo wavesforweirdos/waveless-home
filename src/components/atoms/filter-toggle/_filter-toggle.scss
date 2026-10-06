@@ -1,0 +1,30 @@
+@use 'styles/settings/brand' as *;
+
+// Botón "Ver filtros" que abre el panel de filtros por debajo de 1280 px.
+.filter-toggle {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-control-gap);
+  min-height: var(--size-control-sm);
+  padding-inline: calc(var(--space-toggle-x) - var(--border-width));
+  border: var(--border-width) solid $button-show-filter-border-default;
+  border-radius: var(--radius-control);
+  background-color: $button-show-filter-background-default;
+  color: $button-show-filter-text-default;
+  font: var(--text-button-lg);
+  cursor: pointer;
+
+  &:hover {
+    border-color: $button-show-filter-border-hover;
+    background-color: $button-show-filter-background-hover;
+    color: $button-show-filter-text-hover;
+  }
+
+  &__icon {
+    color: $button-show-filter-icon-default;
+
+    .filter-toggle:hover & {
+      color: $button-show-filter-icon-hover;
+    }
+  }
+}

@@ -1,0 +1,17 @@
+<dialog class="price-popover" id="{{id}}" aria-labelledby="{{id}}-title">
+  <div class="price-popover__bar price-popover__bar--top">
+    <h5 class="price-popover__title" id="{{id}}-title">Desglose de precios</h5>
+    <button class="price-popover__close" type="button" aria-label="Cerrar el desglose de precios">
+      {{> atoms/icon/icon name="close" class=false}}
+    </button>
+  </div>
+  <div class="price-popover__body">
+    <p class="price-popover__place"><span class="price-popover__city">{{city}}</span> <span class="price-popover__days">{{days}}</span></p>
+    <dl class="price-popover__rows">
+      <div class="price-popover__row"><dt>Precio antes de impuestos</dt><dd>1.124,00 €</dd></div>
+      <div class="price-popover__row"><dt>Impuesto</dt><dd>4,43 €</dd></div>
+      <div class="price-popover__row"><dt>Lorem ipsum</dt><dd>150,42 €</dd></div>
+    </dl>
+  </div>
+  <div class="price-popover__total"><span>Precio final</span> <span class="price-popover__total-amount">2.455,00 €</span></div>
+</dialog>

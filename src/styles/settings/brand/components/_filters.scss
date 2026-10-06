@@ -1,0 +1,18 @@
+@use '../semantic' as *;
+
+$filters-section-title-default: $color-foreground-on-light-default;
+$filters-filter-name-text-default: $color-foreground-on-light-default;
+$filters-filter-name-text-hover: $color-foreground-on-light-default;
+$filters-filter-name-text-open: $color-foreground-secondary-dark-default;
+$filters-filter-name-text-open-hover: $color-foreground-secondary-dark-hover;
+$filters-icon-default: $color-foreground-on-light-default;
+$filters-icon-hover: $color-foreground-on-light-default;
+$filters-icon-open: $color-icon-secondary-dark-default;
+$filters-icon-open-hover: $color-foreground-on-light-default;
+$filters-chevron-default: $color-foreground-on-light-default;
+$filters-chevron-hover: $color-foreground-on-light-default;
+$filters-chevron-open: $color-icon-secondary-dark-default;
+$filters-chevron-open-hover: $color-foreground-on-light-default;
+$filters-link-default: $color-foreground-link-default;
+$filters-link-hover: $color-foreground-link-hover;
+$filters-divisor: $color-divisor-light;

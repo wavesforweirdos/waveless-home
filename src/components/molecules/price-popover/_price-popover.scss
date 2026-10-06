@@ -1,0 +1,152 @@
+@use 'styles/settings/brand' as *;
+@use 'styles/tools' as *;
+
+// Desglose de precios de una card: un <dialog> que breakdown.ts abre según --price-popover-modal:
+// - por debajo de 744 px, modal a pantalla completa (showModal);
+// - desde 744 px, popover no modal (show) de 400 px centrado sobre la card.
+// Sin JavaScript no se abre y el botón «Ver desglose» no se muestra.
+.price-popover {
+  --price-popover-modal: 1;
+  --price-popover-inset: var(--space-lg);
+
+  position: fixed;
+  inset: 0;
+  box-sizing: border-box;
+  width: 100%;
+  max-width: none;
+  height: 100%;
+  max-height: none;
+  margin: 0;
+  padding: 0;
+  border: var(--border-width) solid $overlay-border-default;
+  background-color: $overlay-background-default;
+  color: $overlay-text-default;
+  overflow: auto;
+
+  @include scrollbar-thin;
+
+  // El navegador oculta el dialog cerrado; solo hay que dar el display al abierto.
+  &[open] {
+    display: flex;
+    flex-direction: column;
+  }
+
+  // La pantalla completa ya tapa la página: el fondo del modal no añade nada.
+  &::backdrop {
+    background: transparent;
+  }
+
+  @include from(tablet-small) {
+    --price-popover-modal: 0;
+    --price-popover-inset: var(--space-xl);
+
+    position: absolute;
+    inset: auto;
+    inset-block-start: calc(100% - var(--space-sm) - var(--border-width));
+    inset-inline-start: 50%;
+    z-index: var(--z-popover);
+    width: var(--size-popover);
+    height: auto;
+    border-radius: var(--radius-card);
+    box-shadow: var(--shadow-raised);
+    translate: -50% 0;
+    overflow: hidden;
+  }
+
+  &__bar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: var(--space-lg);
+    background-color: $overlay-top-bar-default;
+  }
+
+  // Los filetes de 1 px van dentro de las franjas de 56 y 64 px: se restan del padding.
+  &__bar--top {
+    padding-block-end: calc(var(--space-lg) - var(--border-width));
+    border-block-end: var(--border-width) solid $overlay-border-default;
+  }
+
+  &__title {
+    padding-inline-start: var(--space-sm);
+    color: $overlay-bar-text-default;
+    font: var(--text-popover-title);
+  }
+
+  &__close {
+    display: inline-flex;
+    padding: 0;
+    border: 0;
+    background: none;
+    color: $overlay-close-icon-default;
+    cursor: pointer;
+
+    &:hover {
+      color: $overlay-close-icon-hover;
+    }
+  }
+
+  &__body {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-xl);
+    padding: var(--space-xl) var(--price-popover-inset);
+
+    @include from(tablet-small) {
+      gap: var(--space-popover-gap);
+    }
+  }
+
+  &__place {
+    display: flex;
+    gap: var(--space-control-gap);
+  }
+
+  &__city {
+    color: $overlay-title-default;
+    font: var(--text-popover-city);
+  }
+
+  &__days {
+    font: var(--text-popover-days);
+  }
+
+  &__rows {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-lg);
+  }
+
+  &__row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--space-sm);
+
+    dt {
+      font: var(--text-popover-label);
+    }
+
+    dd {
+      margin: 0;
+      color: $overlay-price-default;
+      font: var(--text-popover-amount);
+    }
+  }
+
+  &__total {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: calc(var(--space-popover-gap) - var(--border-width)) var(--price-popover-inset)
+      var(--space-popover-gap);
+    border-block-start: var(--border-width) solid $overlay-border-default;
+    background-color: $overlay-bottom-bar-default;
+    font: var(--text-popover-total);
+  }
+
+  &__total-amount {
+    color: $overlay-price-default;
+    font: var(--text-price);
+  }
+}

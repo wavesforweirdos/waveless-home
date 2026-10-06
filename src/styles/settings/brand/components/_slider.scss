@@ -1,0 +1,14 @@
+@use '../global' as *;
+@use '../semantic' as *;
+
+// A11Y-WARNING [WCAG 1.4.11] Contraste 1,80:1 del icono blanco de las flechas sobre el relleno de Brand (mínimo 3:1). Propuesta: fondo al 56 % de primary-700 (3,05:1) o icono en $color-icon-primary-dark-default (5,55:1).
+$button-slider-navigation-background-default: $color-background-primary-low-alpha;
+$button-slider-navigation-background-hover: $primary-700;
+$button-slider-navigation-icon-default: $color-icon-white-default;
+$button-slider-navigation-icon-hover: $color-icon-white-hover;
+
+// indicator/slider (slider-indicator; solo reposo y seleccionado: no es interactivo)
+$indicator-slider-background-default: $color-background-white-high-alpha;
+$indicator-slider-border-default: $color-border-white-default;
+$indicator-slider-background-selected-default: $color-background-secondary-medium-default;
+$indicator-slider-border-selected-default: $color-border-white-default;

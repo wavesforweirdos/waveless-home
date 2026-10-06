@@ -1,0 +1,64 @@
+@use 'styles/tools' as *;
+
+// Carrusel del hero. Grid de tres columnas (flecha, pista, flecha) y dos filas (pista y puntos).
+// Sin JavaScript la pista ya funciona con scroll-snap; flechas y puntos están ocultos (hidden) hasta que hero.ts los muestra.
+.hero {
+  display: grid;
+  grid-template-columns: var(--size-control-sm) 1fr var(--size-control-sm);
+  grid-template-rows: minmax(min-content, 1fr) auto;
+  min-height: var(--size-hero);
+
+  &__track {
+    display: flex;
+    grid-area: 1 / 1 / -1 / -1;
+    min-height: 0;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    scrollbar-width: none;
+
+    /* stylelint-disable-next-line selector-no-vendor-prefix */
+    &::-webkit-scrollbar {
+      display: none;
+    }
+
+    // El anillo lo dibuja __ring: las diapositivas, con su foto, taparían el del propio elemento.
+    &:focus-visible {
+      outline: none;
+    }
+  }
+
+  // Capa sin contenido sobre la pista, solo para pintar el anillo de foco de la pista.
+  &__ring {
+    z-index: 1;
+    grid-area: 1 / 1 / -1 / -1;
+    pointer-events: none;
+
+    .hero__track:focus-visible ~ & {
+      @include focus-ring($inset: true, $on-photo: true);
+    }
+  }
+
+  &__control {
+    position: relative;
+    z-index: 1;
+    grid-row: 1 / -1;
+    align-self: center;
+  }
+
+  &__control--prev {
+    grid-column: 1;
+  }
+
+  &__control--next {
+    grid-column: 3;
+  }
+
+  // Los puntos van a 32 px del borde inferior, bajo el texto.
+  &__indicator {
+    position: relative;
+    z-index: 1;
+    grid-area: 2 / 2;
+    place-self: end center;
+    padding-block-end: var(--space-2xl);
+  }
+}

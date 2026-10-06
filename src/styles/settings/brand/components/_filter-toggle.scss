@@ -1,0 +1,10 @@
+@use '../semantic' as *;
+
+$button-show-filter-text-default: $color-foreground-on-light-default;
+$button-show-filter-text-hover: $color-foreground-on-light-hover;
+$button-show-filter-icon-default: $color-icon-black-default;
+$button-show-filter-icon-hover: $color-icon-black-hover;
+$button-show-filter-background-default: $color-background-secondary-light-default;
+$button-show-filter-background-hover: $color-background-secondary-light-hover;
+$button-show-filter-border-default: $color-border-medium-default;
+$button-show-filter-border-hover: $color-border-medium-hover;

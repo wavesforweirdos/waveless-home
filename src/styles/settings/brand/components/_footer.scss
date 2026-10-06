@@ -1,0 +1,5 @@
+@use '../semantic' as *;
+
+$footer-background-default: $color-background-secondary-light-default;
+$footer-background-bottom-bar-default: $color-background-medium-light-default;
+$footer-foreground-bottom-bar-default: $color-foreground-primary-dark-default;

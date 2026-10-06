@@ -1,0 +1,19 @@
+<article class="trip-card">
+  <div class="trip-card__media">
+    <img class="trip-card__photo" src="/src/assets/images/cards/{{photo}}-528.webp" srcset="/src/assets/images/cards/{{photo}}-264.webp 264w, /src/assets/images/cards/{{photo}}-528.webp 528w" sizes="(width < 744px) calc(100vw - 32px), 264px" alt="" width="264" height="188" loading="lazy" decoding="async">
+    {{> atoms/tag/tag text=tag class="trip-card__tag"}}
+  </div>
+  <div class="trip-card__body">
+    <p class="trip-card__place"><span class="trip-card__city">{{city}}</span> <span class="trip-card__days">{{days}}</span></p>
+    <h4 class="trip-card__title">{{title}}</h4>
+  </div>
+  <div class="trip-card__bar">
+    <p class="trip-card__price"><span class="trip-card__from">Desde</span> <span class="trip-card__amount">{{price}}</span></p>
+    <button class="trip-card__breakdown" type="button" aria-expanded="false" aria-controls="{{popoverId}}" aria-label="Ver desglose de precios: {{title}}, {{city}}" hidden>
+      <span class="trip-card__breakdown-label">Ver desglose</span>
+      {{> atoms/icon/icon name="chevron-down" size="sm" class="trip-card__chevron"}}
+    </button>
+    {{> atoms/button/button variant="secondary" size="sm" label="Reservar" href="#" ariaLabel=(concat "Reservar: " title ", " city) class="trip-card__book"}}
+  </div>
+  {{> molecules/price-popover/price-popover id=popoverId city=city days=days}}
+</article>

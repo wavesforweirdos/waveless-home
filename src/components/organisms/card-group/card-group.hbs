@@ -1,0 +1,9 @@
+<!-- [html-validate-disable-next unique-landmark -- la maqueta repite el grupo «Asia» tal como lo dibuja el Figma. Con títulos reales cada grupo tendrá un nombre distinto: quitar este comentario.] -->
+<section class="card-group" aria-labelledby="{{id}}-title">
+  {{> atoms/heading/heading level="3" variant="group" text=title id=(concat id "-title") class="card-group__title"}}
+  <ul class="card-group__list">
+    {{#each cards}}
+    <li>{{> molecules/trip-card/trip-card popoverId=(concat ../id "-card-" @index)}}</li>
+    {{/each}}
+  </ul>
+</section>

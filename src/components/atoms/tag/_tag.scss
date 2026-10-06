@@ -1,0 +1,12 @@
+@use 'styles/settings/brand' as *;
+
+// Etiqueta naranja de las cards.
+.tag {
+  display: inline-block;
+  padding-block: var(--space-2xs);
+  padding-inline: var(--space-md);
+  border-radius: var(--radius-tag);
+  background-color: $tag-primary-background;
+  color: $tag-primary-text;
+  font: var(--text-badge);
+}

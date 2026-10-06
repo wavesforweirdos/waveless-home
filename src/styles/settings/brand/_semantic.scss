@@ -1,0 +1,58 @@
+@use 'global' as *;
+
+// NIVEL 2 · SEMÁNTICO (Figma: color/background|foreground|border|icon). Usa solo el nivel global.
+// Solo están los que se usan en la home.
+
+$color-background-white-default: $basic-000-white;
+$color-background-white-hover: $basic-050;
+$color-background-white-high-alpha: $basic-000-white-high-alpha;
+$color-background-primary-dark-default: $primary-700;
+$color-background-primary-dark-hover: $primary-800;
+$color-background-primary-dark-disabled: $basic-400;
+$color-background-medium-light-default: $basic-100;
+$color-background-primary-low-alpha: $primary-low-alpha;
+$color-background-secondary-light-default: $secondary-050;
+$color-background-secondary-light-hover: $secondary-100;
+$color-background-secondary-medium-default: $secondary-400;
+$color-background-secondary-medium-hover: $secondary-500;
+$color-background-secondary-medium-disabled: $basic-500;
+$color-foreground-on-dark-default: $basic-000-white;
+$color-foreground-on-white-default: $basic-800;
+$color-foreground-on-white-hover: $basic-900;
+$color-foreground-on-light-default: $basic-800;
+$color-foreground-on-light-hover: $basic-900;
+$color-foreground-text-on-light-default: $color-foreground-on-light-default;
+$color-foreground-text-on-light-hover: $basic-900;
+$color-foreground-title-default: $primary-700;
+$color-foreground-black-default: $basic-800;
+$color-foreground-medium-light-default: $basic-500;
+$color-foreground-medium-light-hover: $basic-600;
+
+// A11Y-WARNING [WCAG 1.4.3] Contraste 4,26:1 (mínimo 4,5:1) del nombre del grupo abierto sobre el crema. Propuesta: #b25927 (4,50:1).
+$color-foreground-secondary-dark-default: $secondary-600;
+$color-foreground-secondary-dark-hover: $secondary-700;
+$color-foreground-link-default: $primary-700;
+$color-foreground-link-hover: $primary-800;
+$color-foreground-primary-dark-default: $primary-700;
+$color-foreground-primary-dark-hover: $primary-800;
+$color-foreground-on-primary-dark-default: $basic-000-white;
+$color-foreground-on-primary-dark-hover: $basic-050;
+$color-foreground-on-primary-dark-disabled: $basic-600;
+$color-foreground-on-secondary-medium-default: $secondary-800;
+$color-foreground-on-secondary-medium-hover: $secondary-900;
+$color-foreground-on-secondary-medium-disabled: $basic-700;
+$color-border-white-default: $basic-000-white;
+$color-border-secondary-medium-default: $secondary-400;
+$color-border-medium-default: $basic-100;
+$color-divisor-light: $basic-100;
+$color-border-medium-hover: $basic-200;
+$color-border-primary-dark-default: $primary-700;
+$color-border-primary-dark-hover: $primary-800;
+$color-border-primary-dark-disabled: $basic-500;
+$color-icon-secondary-dark-default: $secondary-600;
+$color-icon-white-default: $basic-000-white;
+$color-icon-white-hover: $basic-000-white;
+$color-icon-black-default: $basic-800;
+$color-icon-black-hover: $basic-900;
+$color-icon-primary-dark-default: $color-foreground-primary-dark-default;
+$color-icon-primary-dark-hover: $color-foreground-primary-dark-hover;

@@ -1,0 +1,30 @@
+@use 'sass:map';
+@use 'sass:math';
+@use '../settings/breakpoints';
+
+// Media query mobile-first: @include from(tablet-small) { … }
+@mixin from($name) {
+  $width: map.get(breakpoints.$breakpoints, $name);
+
+  @if not $width {
+    @error 'Breakpoint desconocido: #{$name}';
+  }
+
+  @media (min-width: #{math.div($width, 16px)}em) {
+    @content;
+  }
+}
+
+// Lo contrario: hasta justo antes del breakpoint. @include below(tablet-large) { … }
+// Usa sintaxis de rango (width < …) porque max-width deja un hueco con anchos fraccionarios.
+@mixin below($name) {
+  $width: map.get(breakpoints.$breakpoints, $name);
+
+  @if not $width {
+    @error 'Breakpoint desconocido: #{$name}';
+  }
+
+  @media (width < #{math.div($width, 16px)}em) {
+    @content;
+  }
+}

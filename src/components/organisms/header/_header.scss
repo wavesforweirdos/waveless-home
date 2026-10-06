@@ -1,0 +1,149 @@
+@use 'styles/settings/brand' as *;
+@use 'styles/tools' as *;
+
+// Navbar. Flex con space-between: logo, pestañas y «Reserva». Por debajo de 1024 la navegación pasa a una columna.
+.header {
+  position: relative;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  min-height: var(--size-navbar);
+  padding-block: var(--space-md) calc(var(--space-md) - var(--border-width));
+  padding-inline: var(--space-navbar-x);
+  border-block-end: var(--border-width) solid $navbar-border-default;
+  background-color: $navbar-background-default;
+
+  @include from(tablet-small) {
+    padding-block: 0;
+  }
+
+  @include from(tablet-large) {
+    flex-wrap: nowrap;
+  }
+
+  &__brand,
+  &__toggle {
+    @include from(tablet-small) {
+      align-items: center;
+      min-height: calc(var(--size-navbar) - var(--border-width));
+    }
+  }
+
+  &__brand {
+    @include from(tablet-small) {
+      display: flex;
+    }
+  }
+
+  &__brand {
+    --logo-height: var(--size-icon-md);
+
+    @include from(tablet-small) {
+      --logo-height: var(--size-icon-lg);
+    }
+  }
+
+  &__logo {
+    height: var(--logo-height);
+  }
+
+  &__brand:focus-visible {
+    @include focus-ring-pill(var(--logo-height));
+  }
+
+  &__toggle {
+    display: none;
+    padding: 0;
+    border: 0;
+    background: none;
+    color: $navbar-menu-icon-default;
+    cursor: pointer;
+
+    &:hover {
+      color: $navbar-menu-icon-hover;
+    }
+
+    @include below(tablet-large) {
+      @include js-enhanced {
+        display: inline-flex;
+      }
+    }
+
+    @include from(tablet-large) {
+      display: none;
+    }
+  }
+
+  &__menu {
+    display: flex;
+    flex: 0 0 calc(100% + 2 * var(--space-navbar-x));
+    flex-direction: column;
+    align-items: stretch;
+    gap: var(--space-sm);
+    margin-inline: calc(-1 * var(--space-navbar-x));
+    padding-block: var(--space-lg);
+
+    @include from(tablet-large) {
+      display: contents;
+    }
+
+    @include below(tablet-large) {
+      @include js-enhanced {
+        position: absolute;
+        z-index: var(--z-menu);
+        inset-block-start: calc(100% + var(--border-width));
+        inset-inline: 0;
+        margin-inline: 0;
+        border-block-end: var(--border-width) solid $navbar-border-default;
+        background-color: $navbar-background-default;
+      }
+    }
+
+    .header:not([data-menu='open']) & {
+      @include below(tablet-large) {
+        @include js-enhanced {
+          display: none;
+        }
+      }
+    }
+  }
+
+  &__nav {
+    @include from(tablet-large) {
+      align-self: stretch;
+    }
+  }
+
+  &__tab-link {
+    flex: 1;
+    padding-inline: var(--space-navbar-x);
+
+    @include from(tablet-large) {
+      padding-inline: var(--space-tab-x);
+    }
+  }
+
+  &__cta {
+    margin-inline: var(--space-navbar-x);
+
+    @include from(tablet-large) {
+      margin-inline: 0;
+    }
+  }
+
+  &__tabs {
+    display: flex;
+    flex-direction: column;
+
+    @include from(tablet-large) {
+      flex-direction: row;
+      gap: var(--space-navbar-tabs);
+      height: 100%;
+    }
+  }
+
+  &__tab {
+    display: flex;
+  }
+}

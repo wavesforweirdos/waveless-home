@@ -1,0 +1,74 @@
+@use 'styles/settings/brand' as *;
+@use 'styles/tools' as *;
+
+// Icono de información con tooltip, mostrado por CSS con hover y foco; info-tooltip.ts añade Escape.
+.info-tooltip {
+  position: relative;
+  display: inline-flex;
+
+  // El icono mide 16 px y el botón 24×24 (WCAG 2.5.8); el margen negativo conserva el layout.
+  &__trigger {
+    display: inline-grid;
+    place-items: center;
+    width: var(--size-target-min);
+    height: var(--size-target-min);
+    margin-inline: calc((var(--size-icon-sm) - var(--size-target-min)) / 2);
+    padding: 0;
+    border: 0;
+    border-radius: 50%;
+    background: transparent;
+    color: $info-tooltip-icon-default;
+    cursor: pointer;
+
+    // El anillo rodea el icono. La burbuja abierta tapa parte del anillo, no todo (WCAG 2.4.11).
+    &:focus-visible {
+      position: relative;
+      outline: none;
+      box-shadow: none;
+
+      &::after {
+        content: '';
+        position: absolute;
+        inset: calc((var(--size-target-min) - var(--size-icon-sm)) / 2);
+        border-radius: 50%;
+        pointer-events: none;
+
+        @include focus-ring;
+      }
+    }
+  }
+
+  // Oculta con display: none.
+  // El triángulo (::after) cubre el hueco con el icono para que no se cierre al mover el puntero (WCAG 1.4.13).
+  &__bubble {
+    position: absolute;
+    bottom: calc(100% + var(--space-3xs));
+    left: 50%;
+    z-index: var(--z-tooltip);
+    width: max-content;
+    max-width: var(--size-tooltip-max);
+    padding-block: var(--space-xs);
+    padding-inline: var(--space-tooltip-x);
+    translate: -50% 0;
+    border-radius: var(--radius-tooltip);
+    background-color: $overlay-background-default;
+    box-shadow: var(--shadow-raised);
+    color: $overlay-text-default;
+    font: var(--text-tooltip);
+    display: none;
+
+    &::after {
+      content: '';
+      position: absolute;
+      top: 100%;
+      left: 50%;
+      translate: -50% 0;
+      border-inline: calc(var(--space-xl) / 2) solid transparent;
+      border-top: var(--space-xs) solid $overlay-background-default;
+    }
+
+    .info-tooltip:is(:hover, :focus-within):not([data-dismissed]) & {
+      display: block;
+    }
+  }
+}

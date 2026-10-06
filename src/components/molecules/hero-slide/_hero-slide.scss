@@ -1,0 +1,62 @@
+@use 'styles/settings/brand' as *;
+@use 'styles/tools' as *;
+
+// Diapositiva del hero: foto de fondo, texto centrado y botón.
+// El padding deja libres las flechas y reserva el hueco de los puntos.
+.hero-slide {
+  position: relative;
+  display: flex;
+  flex: 0 0 100%;
+  flex-direction: column;
+  min-width: 0;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-3xl);
+  padding-block: var(--space-2xl) calc(var(--space-2xl) + var(--size-dot));
+  padding-inline: calc(var(--size-control-sm) + var(--space-hero-x));
+  isolation: isolate;
+  scroll-snap-align: start;
+  scroll-snap-stop: always;
+
+  &__image {
+    position: absolute;
+    inset: 0;
+    z-index: -2;
+  }
+
+  // La foto se ancla arriba a la izquierda y no se escala por debajo de 1440 px; por encima, cover la amplía.
+  &__photo {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: left top;
+  }
+
+  &__text {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--space-md);
+    text-align: center;
+  }
+
+  &__subtitle {
+    color: $hero-subtitle-default;
+    font: var(--text-hero-subtitle);
+  }
+
+  // El botón no se parte en dos líneas y se centra desbordando por igual (de ahí min-width: 0).
+  &__cta {
+    white-space: nowrap;
+
+    &:focus-visible {
+      @include focus-ring($on-photo: true);
+    }
+
+    @include below(tablet-small) {
+      --button-padding-x: var(--space-control-x-lg);
+      --button-min-height: var(--size-control-lg);
+      --button-font: var(--text-button-lg);
+    }
+  }
+}

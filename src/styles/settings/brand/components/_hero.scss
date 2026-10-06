@@ -1,0 +1,6 @@
+@use '../semantic' as *;
+
+$hero-title-default: $color-foreground-on-dark-default;
+
+// A11Y-WARNING [WCAG 1.4.3] Contraste 4,00:1 en el peor píxel a 1280 y 1440 px (mínimo 4,5:1 en texto normal). Propuesta: Velo negro del 10 % sobre la foto (#0000001a), que sube el peor píxel a unos 4,7:1.
+$hero-subtitle-default: $color-foreground-on-dark-default;

@@ -1,0 +1,6 @@
+@use 'sass:math';
+
+// Convierte píxeles del Figma a rem (base 16 px), para que el tamaño respete la preferencia de texto del usuario. rem(24) → 1.5rem.
+@function rem($px) {
+  @return math.div($px, 16) * 1rem;
+}

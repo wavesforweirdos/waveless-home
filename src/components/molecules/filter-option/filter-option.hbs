@@ -1,0 +1,7 @@
+<div class="filter-option">
+  {{> atoms/checkbox/checkbox id=id name=id checked=checked class=false}}
+  <label class="filter-option__label" for="{{id}}">{{label}}</label>
+  {{#if tooltip}}
+  {{> atoms/info-tooltip/info-tooltip owner=id label="Más información sobre" subject=label text=tooltip class=false}}
+  {{/if}}
+</div>

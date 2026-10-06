@@ -1,0 +1,89 @@
+@use 'styles/settings/brand' as *;
+@use 'styles/tools' as *;
+
+// Pestaña del navbar: enlace con icono opcional.
+.nav-tab {
+  --nav-tab-fg: #{$tab-navbar-text-default};
+  --nav-tab-icon: #{$tab-navbar-icon-default};
+
+  position: relative;
+  display: flex;
+  align-items: center;
+  min-height: var(--size-control-base);
+  padding-inline: var(--space-tab-x);
+  color: var(--nav-tab-fg);
+  font: var(--text-nav);
+  text-decoration: none;
+
+  &:hover {
+    --nav-tab-fg: #{$tab-navbar-text-hover};
+    --nav-tab-icon: #{$tab-navbar-icon-hover};
+  }
+
+  &:focus-visible {
+    outline: none;
+    box-shadow: none;
+  }
+
+  @include from(tablet-large) {
+    min-height: 0;
+    margin-block-end: calc(-1 * var(--border-width));
+  }
+
+  &__content {
+    display: flex;
+    align-items: center;
+    gap: var(--space-tab-gap);
+    border-radius: var(--radius-control);
+
+    .nav-tab:focus-visible & {
+      @include focus-ring($focus-gap-link);
+    }
+  }
+
+  &__icon {
+    color: var(--nav-tab-icon);
+  }
+
+  &--current {
+    --nav-tab-fg: #{$tab-navbar-text-selected};
+    --nav-tab-icon: #{$tab-navbar-icon-selected};
+    --nav-tab-indicator: #{$tab-navbar-selection-indicator-background-active};
+
+    font: var(--text-nav-active);
+
+    &:hover {
+      --nav-tab-fg: #{$tab-navbar-foreground-selected-hover};
+      --nav-tab-icon: #{$tab-navbar-icon-selected-hover};
+      --nav-tab-indicator: #{$tab-navbar-selection-indicator-background-active-hover};
+    }
+
+    &::after {
+      content: '';
+      position: absolute;
+      inset-inline: 0;
+      inset-block-end: 0;
+      height: var(--border-width-strong);
+      background-color: var(--nav-tab-indicator);
+    }
+
+    &::before {
+      content: '';
+      position: absolute;
+      inset-inline-start: 50%;
+      inset-block-end: var(--border-width-strong);
+      width: var(--size-tab-marker-width);
+      height: var(--size-tab-marker-height);
+      background-color: var(--nav-tab-indicator);
+      clip-path: polygon(50% 0, 0 100%, 100% 100%);
+      transform: translateX(-50%);
+    }
+
+    @media (forced-colors: active) {
+      &::before,
+      &::after {
+        background-color: highlight;
+      }
+    }
+  }
+}

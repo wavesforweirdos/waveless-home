@@ -1,0 +1,34 @@
+@use 'styles/settings/brand' as *;
+
+// Opción de un filtro: checkbox, etiqueta y, si hace falta, tooltip. Mide 48 px de alto; el checkbox
+// y el botón del tooltip miden 24 px, el mínimo de WCAG 2.5.8 para un objetivo táctil.
+.filter-option {
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm);
+  min-height: var(--size-control-base);
+
+  // Hay 6 px entre la etiqueta y el icono de información (el resto, 8): se restan 2 al hueco.
+  .info-tooltip {
+    margin-inline-start: calc(var(--space-xs) - var(--space-sm));
+  }
+
+  &__label {
+    color: $form-checkbox-text-default;
+    font: var(--text-control);
+    cursor: pointer;
+
+    &:hover {
+      color: $form-checkbox-text-hover;
+    }
+
+    .checkbox:checked + & {
+      color: $form-checkbox-text-selected;
+      font: var(--text-control-strong);
+
+      &:hover {
+        color: $form-checkbox-foreground-selected-hover;
+      }
+    }
+  }
+}

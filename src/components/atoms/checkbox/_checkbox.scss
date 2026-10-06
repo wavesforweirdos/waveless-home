@@ -1,0 +1,80 @@
+@use 'styles/settings/brand' as *;
+@use 'styles/tools' as *;
+
+// Checkbox nativo con apariencia propia. El input mide 24 px (área de pulsación) y la caja, 18 px.
+.checkbox {
+  appearance: none;
+  display: inline-grid;
+  flex: none;
+  place-content: center;
+  width: var(--size-icon-md);
+  height: var(--size-icon-md);
+  margin: 0;
+  background: transparent;
+  cursor: pointer;
+
+  &::before {
+    content: '';
+    grid-area: 1 / 1;
+    width: var(--size-checkbox-box);
+    height: var(--size-checkbox-box);
+    border: var(--border-width) solid $form-checkbox-box-border-default;
+    border-radius: var(--radius-checkbox);
+    background-color: $form-checkbox-box-background-default;
+  }
+
+  &:hover::before {
+    border-color: $form-checkbox-box-border-hover;
+    background-color: $form-checkbox-box-background-hover;
+  }
+
+  &:checked::before {
+    border-color: $form-checkbox-box-border-selected;
+    background-color: $form-checkbox-box-background-selected;
+  }
+
+  &:checked:hover::before {
+    border-color: $form-checkbox-box-border-selected-hover;
+    background-color: $form-checkbox-box-background-selected-hover;
+  }
+
+  // Foco: el anillo rodea la caja visible de 18 px, no el input de 24.
+  &:focus-visible {
+    outline: none;
+    box-shadow: none;
+  }
+
+  &:focus-visible::before {
+    @include focus-ring;
+  }
+
+  // Marca de verificación, oculta mientras no está marcado.
+  &::after {
+    content: '';
+    grid-area: 1 / 1;
+    place-self: center;
+    width: var(--size-icon-sm);
+    height: var(--size-icon-sm);
+    background-color: $form-checkbox-check-icon-default;
+    mask-image: url('../../../assets/icons/check.svg');
+    mask-position: center;
+    mask-repeat: no-repeat;
+    mask-size: contain;
+    visibility: hidden;
+  }
+
+  &:checked::after {
+    visibility: visible;
+  }
+
+  &:hover::after {
+    background-color: $form-checkbox-check-icon-hover;
+  }
+
+  // Alto contraste de Windows: sin esto la máscara de la marca quedaría vacía.
+  @media (forced-colors: active) {
+    &::after {
+      background-color: canvastext;
+    }
+  }
+}

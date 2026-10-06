@@ -1,0 +1,25 @@
+@use 'styles/settings/brand' as *;
+@use 'styles/tools' as *;
+
+.footer {
+  border-block-start: var(--border-width) solid $footer-border-top-default;
+  background-color: $footer-background-default;
+
+  &__main {
+    display: flex;
+    padding-block: calc(var(--space-footer-y) - var(--border-width)) var(--space-footer-y);
+    padding-inline: var(--space-footer-x);
+
+    @include from(desktop) {
+      justify-content: center;
+    }
+  }
+
+  &__legal {
+    padding: var(--space-lg);
+    background-color: $footer-background-bottom-bar-default;
+    color: $footer-foreground-bottom-bar-default;
+    font: var(--text-legal);
+    text-align: center;
+  }
+}

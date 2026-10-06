@@ -1,0 +1,10 @@
+<details class="filter-group"{{#if open}} open{{/if}}>
+  <summary class="filter-group__summary">
+    {{> atoms/icon/icon name=icon class="filter-group__icon"}}
+    <span class="filter-group__name">{{name}}</span>
+    {{> atoms/icon/icon name="chevron-right" class="filter-group__chevron"}}
+  </summary>
+  <div class="filter-group__body">
+    {{> @partial-block}}
+  </div>
+</details>

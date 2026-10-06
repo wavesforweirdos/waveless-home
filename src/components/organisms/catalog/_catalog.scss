@@ -1,0 +1,61 @@
+@use 'styles/tools' as *;
+
+// Sección del catálogo. El cuerpo es un Grid con columnas explícitas de 264 px (1 en móvil, 2 desde 744, 3 desde 1024),
+// no auto-fill. Desde 1280 se añade una primera columna para los filtros, reservada solo con el grid.
+.catalog {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-section-header);
+  padding-block: var(--space-section);
+  padding-inline: var(--space-gutter);
+
+  &__body {
+    display: grid;
+    grid-template-columns: minmax(0, var(--size-card-mobile));
+    gap: var(--space-xl);
+    justify-content: center;
+    margin-inline: calc(-1 * var(--space-card-bleed));
+
+    @include from(tablet-small) {
+      grid-template-columns: repeat(2, var(--size-card));
+      margin-inline: 0;
+    }
+
+    @include from(tablet-large) {
+      grid-template-columns: repeat(3, var(--size-card));
+    }
+
+    @include from(desktop) {
+      grid-template-columns: var(--size-filters) repeat(3, var(--size-card));
+    }
+  }
+
+  // «Ver filtros»: abre el cajón por debajo de 1280 px. Solo se muestra con JavaScript (js-enhanced).
+  // Centrado hasta 1024 px y a la izquierda de las cards desde ahí.
+  &__filters-toggle {
+    display: none;
+    grid-column: 1 / -1;
+    justify-self: center;
+
+    @include from(tablet-large) {
+      justify-self: start;
+    }
+
+    @include below(desktop) {
+      @include js-enhanced {
+        display: inline-flex;
+      }
+    }
+  }
+
+  &__groups {
+    display: grid;
+    grid-column: 1 / -1;
+    grid-template-columns: subgrid;
+    row-gap: var(--space-xl);
+
+    @include from(desktop) {
+      grid-column: 2 / -1;
+    }
+  }
+}

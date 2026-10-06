@@ -1,0 +1,75 @@
+@use '../tools' as *;
+
+// Valores crudos del Figma que no dependen de la marca: espaciado, tamaños, radios, sombras y tipografía.
+:root {
+  // Espaciado
+  --space-1: #{rem(1)};
+  --space-2: #{rem(2)};
+  --space-4: #{rem(4)};
+  --space-6: #{rem(6)};
+  --space-8: #{rem(8)};
+  --space-10: #{rem(10)};
+  --space-12: #{rem(12)};
+  --space-14: #{rem(14)};
+  --space-16: #{rem(16)};
+  --space-20: #{rem(20)};
+  --space-24: #{rem(24)};
+  --space-32: #{rem(32)};
+  --space-40: #{rem(40)};
+  --space-48: #{rem(48)};
+  --space-56: #{rem(56)};
+  --space-72: #{rem(72)};
+
+  // Tamaños
+  --size-10: #{rem(10)};
+  --size-12: #{rem(12)};
+  --size-16: #{rem(16)};
+  --size-18: #{rem(18)};
+  --size-24: #{rem(24)};
+  --size-32: #{rem(32)};
+  --size-40: #{rem(40)};
+  --size-48: #{rem(48)};
+  --size-56: #{rem(56)};
+  --size-80: #{rem(80)};
+  --size-188: #{rem(188)};
+  --size-176: #{rem(176)};
+  --size-204: #{rem(204)};
+  --size-264: #{rem(264)};
+  --size-296: #{rem(296)};
+  --size-360: #{rem(360)};
+  --size-400: #{rem(400)};
+
+  // Grosor de línea
+  --border-width-1: 1px;
+  --border-width-2: 2px;
+
+  // Radios
+  --radius-2: #{rem(2)};
+  --radius-4: #{rem(4)};
+  --radius-24: #{rem(24)};
+  --radius-208: #{rem(208)};
+
+  // Sombras
+  --shadow-100: 0 4px 8px #0003;
+  --shadow-200: 0 4px 12px #0000003d;
+
+  // Tipografía
+  --font-family-syne: 'Syne', system-ui, sans-serif;
+  --font-family-nunito: 'Nunito', system-ui, sans-serif;
+  --font-weight-400: 400;
+  --font-weight-500: 500;
+  --font-weight-600: 600;
+  --font-weight-700: 700;
+  --font-weight-800: 800;
+  --font-size-12: #{rem(12)};
+  --font-size-14: #{rem(14)};
+  --font-size-16: #{rem(16)};
+  --font-size-18: #{rem(18)};
+  --font-size-20: #{rem(20)};
+  --font-size-22: #{rem(22)};
+  --line-height-16: #{rem(16)};
+  --line-height-18: #{rem(18)};
+  --line-height-20: #{rem(20)};
+  --line-height-22: #{rem(22)};
+  --line-height-24: #{rem(24)};
+}

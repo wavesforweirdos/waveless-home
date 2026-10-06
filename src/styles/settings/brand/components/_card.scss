@@ -1,0 +1,16 @@
+@use '../semantic' as *;
+
+$card-background-default: $color-background-white-default;
+$card-background-hover: $color-background-white-default;
+$card-title-default: $color-foreground-title-default;
+$card-title-hover: $color-foreground-title-default;
+$card-text-default: $color-foreground-text-on-light-default;
+$card-text-hover: $color-foreground-text-on-light-hover;
+$card-top-price-text: $color-foreground-on-light-default;
+$card-price: $color-foreground-on-light-default;
+$card-breakdown-foreground-default: $color-foreground-primary-dark-default;
+$card-breakdown-foreground-hover: $color-foreground-primary-dark-hover;
+$card-breakdown-chevron-default: $color-foreground-primary-dark-default;
+$card-breakdown-chevron-hover: $color-foreground-primary-dark-hover;
+$card-circuit-card-bottom-bar-background-default: $color-background-secondary-light-default;
+$card-circuit-card-bottom-bar-background-hover: $color-background-secondary-light-default;

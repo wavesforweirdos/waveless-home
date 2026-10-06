@@ -1,0 +1,12 @@
+<section class="hero" data-hero aria-roledescription="carrusel" aria-label="Rutas destacadas">
+  {{> atoms/slider-control/slider-control class="hero__control hero__control--prev" icon="chevron-left" label="Diapositiva anterior" hidden=true}}
+  {{> atoms/slider-control/slider-control class="hero__control hero__control--next" icon="chevron-right" label="Diapositiva siguiente" hidden=true}}
+  <div class="hero__track" tabindex="0" role="group" aria-label="Diapositivas">
+    {{> molecules/hero-slide/hero-slide first=true position="1 de 3" title="Ruta por Australia" subtitle="Si te va la aventura, no te lo puedes perder" cta="Más información" href="#"}}
+    {{> molecules/hero-slide/hero-slide position="2 de 3" title="Ruta por Marruecos" subtitle="Si te va la aventura, no te lo puedes perder" cta="Más información" href="#"}}
+    {{> molecules/hero-slide/hero-slide position="3 de 3" title="Ruta por Bangkok" subtitle="Si te va la aventura, no te lo puedes perder" cta="Más información" href="#"}}
+  </div>
+  <span class="hero__ring" aria-hidden="true"></span>
+  {{> atoms/slider-indicator/slider-indicator class="hero__indicator" hidden=true}}
+  <p class="u-visually-hidden" aria-live="polite" data-hero-status></p>
+</section>

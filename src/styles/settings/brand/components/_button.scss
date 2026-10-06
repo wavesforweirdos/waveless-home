@@ -1,0 +1,28 @@
+@use '../semantic' as *;
+
+// button: primario
+$button-primary-text-default: $color-foreground-on-primary-dark-default;
+$button-primary-background-default: $color-background-primary-dark-default;
+$button-primary-text-hover: $color-foreground-on-primary-dark-hover;
+$button-primary-background-hover: $color-background-primary-dark-hover;
+$button-primary-text-disabled: $color-foreground-on-primary-dark-disabled;
+$button-primary-background-disabled: $color-background-primary-dark-disabled;
+
+// button: acento
+$button-accent-text-default: $color-foreground-on-secondary-medium-default;
+$button-accent-background-default: $color-background-secondary-medium-default;
+$button-accent-text-hover: $color-foreground-on-secondary-medium-hover;
+$button-accent-background-hover: $color-background-secondary-medium-hover;
+$button-accent-text-disabled: $color-foreground-on-secondary-medium-disabled;
+$button-accent-background-disabled: $color-background-secondary-medium-disabled;
+
+// button: secundario
+$button-secondary-text-default: $color-foreground-primary-dark-default;
+$button-secondary-background-default: $color-background-white-default;
+$button-secondary-border-default: $color-border-primary-dark-default;
+$button-secondary-text-hover: $color-foreground-primary-dark-hover;
+$button-secondary-background-hover: $color-background-white-hover;
+$button-secondary-border-hover: $color-border-primary-dark-hover;
+$button-secondary-foreground-disabled: $color-foreground-on-primary-dark-disabled;
+$button-secondary-background-disabled: $color-background-white-default;
+$button-secondary-border-disabled: $color-border-primary-dark-disabled;

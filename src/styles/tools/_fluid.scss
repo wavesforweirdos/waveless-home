@@ -1,0 +1,83 @@
+@use 'sass:list';
+@use 'sass:map';
+@use 'sass:math';
+@use '../settings/breakpoints';
+@use 'media-queries' as *;
+@use 'rem' as *;
+
+// TIPOGRAFÍA FLUIDA
+// Qué resuelve: el Figma da el tamaño y el interlineado de cada texto en cuatro anchos (390, 744, 1024
+// y 1280 px). Entre esos anchos el diseño no dice nada, y saltar de un tamaño a otro en cada
+// breakpoint se nota. Aquí el texto crece de forma continua de un ancho de diseño al siguiente.
+// Cómo funciona:
+// 1. fluid() calcula, para un tramo entre dos anchos, un clamp() con una recta:
+//    tamaño = valor inicial + pendiente × (ancho de pantalla − ancho inicial).
+// 2. text-segment() monta la propiedad `font` completa (peso, tamaño/interlineado, familia) de un rol
+//    para un tramo. El último punto (1280 px) no interpola: es constante.
+// 3. fluid-text-tokens() recorre los roles y emite un token --text-<rol> en :root. Primero con el tramo
+//    de móvil (390 → 744) y después, dentro de cada media query de los breakpoints, redefine el
+//    token con el tramo siguiente. Cada tramo acaba donde empieza el siguiente: no hay saltos.
+// Por qué así y no de otra forma:
+// - Con una sola media query por tamaño habría saltos bruscos entre breakpoints.
+// - Con un único clamp() de móvil a desktop se perdería el valor exacto de los anchos intermedios, y
+//   hay roles que no son monótonos (el título del hero es mayor en móvil que en desktop).
+// - Sass calcula las fórmulas al compilar y el navegador solo recibe tokens.
+// - Mínimo y máximo van en rem, así el tamaño sigue la preferencia de texto del usuario y el zoom.
+
+@function fluid($from, $to, $from-width, $to-width) {
+  @if $from == $to {
+    @return rem($from);
+  }
+
+  $low: math.min($from, $to);
+  $high: math.max($from, $to);
+  $slope: math.div($to - $from, $to-width - $from-width);
+
+  @return clamp(
+    #{rem($low)},
+    calc(#{rem($from)} + #{$slope} * (100vw - #{$from-width * 1px})),
+    #{rem($high)}
+  );
+}
+
+@function text-segment($role, $index, $widths) {
+  $sizes: map.get($role, 'sizes');
+  $lines: map.get($role, 'lines');
+  $last: list.length($widths);
+  $size: rem(list.nth($sizes, $index));
+  $line: rem(list.nth($lines, $index));
+
+  @if $index < $last {
+    $from-width: list.nth($widths, $index);
+    $to-width: list.nth($widths, $index + 1);
+    $size: fluid(list.nth($sizes, $index), list.nth($sizes, $index + 1), $from-width, $to-width);
+    $line: fluid(list.nth($lines, $index), list.nth($lines, $index + 1), $from-width, $to-width);
+  }
+
+  @return '#{map.get($role, "weight")} #{$size}/#{$line} #{map.get($role, "family")}';
+}
+
+@mixin fluid-text-tokens($roles) {
+  $widths: (
+    math.div(breakpoints.$mobile-width, 1px),
+    math.div(map.get(breakpoints.$breakpoints, 'tablet-small'), 1px),
+    math.div(map.get(breakpoints.$breakpoints, 'tablet-large'), 1px),
+    math.div(map.get(breakpoints.$breakpoints, 'desktop'), 1px)
+  );
+
+  :root {
+    @each $name, $role in $roles {
+      --text-#{$name}: #{text-segment($role, 1, $widths)};
+    }
+  }
+
+  @each $index, $breakpoint in (2: 'tablet-small', 3: 'tablet-large', 4: 'desktop') {
+    @include from($breakpoint) {
+      :root {
+        @each $name, $role in $roles {
+          --text-#{$name}: #{text-segment($role, $index, $widths)};
+        }
+      }
+    }
+  }
+}

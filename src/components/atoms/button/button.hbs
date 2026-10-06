@@ -1,0 +1,5 @@
+{{#if href}}
+<a class="button button--{{variant}} button--{{size}}{{#if block}} button--block{{/if}}{{#if class}} {{class}}{{/if}}" href="{{href}}"{{#if ariaLabel}} aria-label="{{ariaLabel}}"{{/if}}>{{label}}</a>
+{{else}}
+<button class="button button--{{variant}} button--{{size}}{{#if block}} button--block{{/if}}{{#if class}} {{class}}{{/if}}" type="button"{{#if ariaLabel}} aria-label="{{ariaLabel}}"{{/if}}{{#if disabled}} disabled{{/if}}>{{label}}</button>
+{{/if}}

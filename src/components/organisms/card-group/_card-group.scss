@@ -1,0 +1,29 @@
+@use 'styles/tools' as *;
+
+// Grupo de cards: título + lista. Es un <section> con nombre (su título), así que cada grupo es una región.
+// Usa las columnas del catálogo con subgrid para alinear el título con la primera card.
+.card-group {
+  display: grid;
+  grid-column: 1 / -1;
+  grid-template-columns: subgrid;
+  row-gap: var(--space-lg);
+
+  // En móvil el título deja 17 px más que las cards (32 px del borde en 390), como en el Figma.
+  &__title {
+    grid-column: 1 / -1;
+    padding-inline: calc(var(--space-lg) + var(--space-card-bleed));
+
+    @include from(tablet-small) {
+      padding-inline: 0;
+    }
+  }
+
+  // Margen y no padding: el reset deja los ul con clase sin padding. Deja sitio a la sombra de la última fila.
+  &__list {
+    display: grid;
+    grid-column: 1 / -1;
+    grid-template-columns: subgrid;
+    gap: var(--space-xl);
+    margin-block-end: var(--space-sm);
+  }
+}

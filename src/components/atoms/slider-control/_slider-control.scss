@@ -1,0 +1,32 @@
+@use 'styles/settings/brand' as *;
+@use 'styles/tools' as *;
+
+// Flecha anterior/siguiente del carrusel del hero. Solo lleva icono, así que el botón lleva aria-label.
+.slider-control {
+  display: inline-flex;
+  flex: none;
+  align-items: center;
+  justify-content: center;
+  width: var(--size-control-sm);
+  height: var(--size-control-sm);
+  padding: 0;
+  border: var(--border-width) solid transparent; // Borde transparente: solo se ve en alto contraste.
+  border-radius: var(--radius-slider-control);
+  background-color: $slider-control-underlay;
+  background-image: linear-gradient(
+    $button-slider-navigation-background-default,
+    $button-slider-navigation-background-default
+  );
+  color: $button-slider-navigation-icon-default;
+  cursor: pointer;
+
+  &:hover {
+    background-color: $button-slider-navigation-background-hover;
+    background-image: none;
+    color: $button-slider-navigation-icon-hover;
+  }
+
+  &:focus-visible {
+    @include focus-ring($inset: true, $on-photo: true);
+  }
+}

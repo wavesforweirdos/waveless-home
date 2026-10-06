@@ -1,0 +1,18 @@
+@use '../semantic' as *;
+
+$form-checkbox-box-background-default: $color-background-white-default;
+$form-checkbox-box-background-hover: $color-background-white-default;
+
+// A11Y-WARNING [WCAG 1.4.11] Contraste 2,11:1 del relleno de la casilla marcada sobre el crema del panel (mínimo 3:1). Propuesta: relleno #b85c28 (4,26:1) con la marca en blanco (4,57:1).
+$form-checkbox-box-background-selected: $color-background-secondary-medium-default;
+$form-checkbox-box-background-selected-hover: $color-background-secondary-medium-hover;
+$form-checkbox-box-border-default: $color-border-primary-dark-default;
+$form-checkbox-box-border-hover: $color-border-primary-dark-hover;
+$form-checkbox-box-border-selected: $color-border-primary-dark-default;
+$form-checkbox-box-border-selected-hover: $color-border-primary-dark-hover;
+$form-checkbox-check-icon-default: $color-icon-primary-dark-default;
+$form-checkbox-check-icon-hover: $color-icon-primary-dark-hover;
+$form-checkbox-text-default: $color-foreground-on-white-default;
+$form-checkbox-text-hover: $color-foreground-on-white-hover;
+$form-checkbox-text-selected: $color-foreground-on-white-default;
+$form-checkbox-foreground-selected-hover: $color-foreground-on-white-hover;

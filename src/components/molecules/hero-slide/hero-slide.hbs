@@ -1,0 +1,12 @@
+<div class="hero-slide" role="group" aria-roledescription="diapositiva" aria-label="{{position}}">
+  <picture class="hero-slide__image">
+    <source media="(width <= 26.875em)" srcset="/src/assets/images/hero-mobile-430.webp 1x, /src/assets/images/hero-mobile-860.webp 2x" type="image/webp">
+    <source media="(width < 46.5em)" srcset="/src/assets/images/hero-mobile-744.webp 1x, /src/assets/images/hero-mobile-1488.webp 2x" type="image/webp">
+    <img class="hero-slide__photo" src="/src/assets/images/hero-1440.webp" srcset="/src/assets/images/hero-1440.webp 1x, /src/assets/images/hero-2880.webp 2x" alt="" width="1440" height="400" decoding="async"{{#if first}} fetchpriority="high"{{else}} loading="lazy"{{/if}}>
+  </picture>
+  <div class="hero-slide__text">
+    {{> atoms/heading/heading level="2" variant="hero" text=title}}
+    <p class="hero-slide__subtitle">{{subtitle}}</p>
+  </div>
+  {{> atoms/button/button variant="accent" size="base" label=cta href=href class="hero-slide__cta"}}
+</div>

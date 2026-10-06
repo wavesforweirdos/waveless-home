@@ -1,0 +1,162 @@
+@use 'styles/settings/brand' as *;
+@use 'styles/tools' as *;
+
+// Panel de filtros: el formulario vive en un <aside> y, por debajo de 1280 px con JavaScript,
+// filters.ts lo mueve a un <dialog> (cajón). Dónde se ve el aside:
+// - desde 1280 px: en la columna reservada del catálogo;
+// - por debajo, con JavaScript: oculto, y «Ver filtros» abre el cajón;
+// - por debajo, sin JavaScript: apilado encima de los resultados.
+.filters {
+  grid-column: 1 / -1;
+  background-color: $filters-background;
+  border-radius: var(--radius-card);
+
+  @include from(tablet-small) {
+    justify-self: start;
+    width: var(--size-filters-panel);
+  }
+
+  @include from(desktop) {
+    grid-column: 1;
+    place-self: start stretch;
+    width: auto;
+    margin-block-start: calc(var(--space-xl) + var(--space-lg));
+    position: sticky;
+    inset-block-start: var(--space-xl);
+    max-height: calc(100vh - 2 * var(--space-xl));
+    max-height: calc(100dvh - 2 * var(--space-xl));
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+  }
+
+  @include below(desktop) {
+    @include js-enhanced {
+      display: none;
+    }
+  }
+
+  &__form {
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+    min-height: 0;
+  }
+
+  &__header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    box-sizing: border-box;
+    min-height: var(--size-filters-header);
+    padding-inline: var(--space-xl);
+    border-block-end: var(--border-width) solid $filters-divisor;
+  }
+
+  &__close {
+    display: none;
+    padding: 0;
+    border: 0;
+    background: none;
+    color: $overlay-close-icon-default;
+    cursor: pointer;
+
+    &:hover {
+      color: $overlay-close-icon-hover;
+    }
+
+    .filters-dialog & {
+      display: inline-flex;
+    }
+  }
+
+  &__body {
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+    gap: var(--space-sm);
+    min-height: 0;
+    padding: var(--space-md) var(--space-xl) var(--space-2xl);
+    overflow-y: auto;
+    overscroll-behavior: contain;
+
+    @include scrollbar-thin;
+  }
+
+  &__prices {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-lg);
+    padding-block-start: var(--space-sm);
+  }
+}
+
+.filter-options {
+  margin-inline-start: var(--space-lg);
+
+  &--extra:not([data-open]) {
+    @include js-enhanced {
+      display: none;
+    }
+  }
+}
+
+// Aventura: las 21 opciones extra. Sin JavaScript se ven todas; con JavaScript empiezan ocultas
+// (display: none) y el botón las muestra.
+.filter-more {
+  display: none;
+  align-items: center;
+  min-height: var(--size-control-base);
+  margin: var(--space-3xs) 0 var(--space-3xs) var(--space-lg);
+  padding: 0;
+  border: 0;
+  background: none;
+  color: $filters-link-default;
+  font: var(--text-link);
+  text-decoration: underline;
+  cursor: pointer;
+
+  &:hover {
+    color: $filters-link-hover;
+  }
+
+  // El botón mide 48 px de alto y el texto, una línea: el anillo va en píldora alrededor del texto.
+  &:focus-visible {
+    @include focus-ring-pill(1lh, $halo: false);
+  }
+
+  @include js-enhanced {
+    display: inline-flex;
+  }
+}
+
+// El cajón: fijo, a la altura de la pantalla (100vh y 100dvh si se soporta) y con scroll interno.
+// Sin fondo oscuro: el ::backdrop es transparente.
+.filters-dialog {
+  inset-block: 0;
+  inset-inline: 0 auto;
+  box-sizing: border-box;
+  width: 100%;
+  max-width: none;
+  height: 100vh;
+  height: 100dvh;
+  max-height: none;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  background-color: $filters-background;
+  overflow: hidden;
+
+  &[open] {
+    display: flex;
+    flex-direction: column;
+  }
+
+  &::backdrop {
+    background: transparent;
+  }
+
+  @include from(tablet-small) {
+    width: var(--size-filters-panel);
+  }
+}

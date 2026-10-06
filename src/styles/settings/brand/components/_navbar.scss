@@ -1,0 +1,6 @@
+@use '../semantic' as *;
+
+$navbar-background-default: $color-background-white-default;
+$navbar-menu-icon-default: $color-foreground-primary-dark-default;
+$navbar-menu-icon-hover: $color-foreground-primary-dark-hover;
+$navbar-border-default: $color-border-secondary-medium-default;
